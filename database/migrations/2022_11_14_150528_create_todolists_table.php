@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('todolists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id', 10)->unsigned();
+            // 外部キーを設定する
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name', 40);
             $table->string('text', 255);
             $table->integer('status')->default(1);
@@ -23,9 +24,6 @@ return new class extends Migration
             $table->date('completion_date');
             $table->timestamps();
             $table->softDeletes();
-
-            // 外部キーを設定する
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

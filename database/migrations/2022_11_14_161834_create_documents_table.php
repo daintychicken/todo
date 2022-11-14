@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('todo_id', 10)->unsigned();
+            // 外部キーを設定する
+            $table->foreignId('todo_id')->constrained('todolists');
             $table->string('title', 100);
             $table->binaly('file');
             $table->timestamps();
             $table->softDeletes();
-
-            // 外部キーを設定する
-            $table->foreign('todo_id')->references('id')->on('todolists');
         });
     }
 
