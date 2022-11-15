@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->increments('id');
-            // 外部キーを設定する
-            $table->foreignId('todo_id')->constrained('todolists');
-            $table->string('title', 100);
-            $table->binaly('file');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('login_id', 10);
+            $table->string('password', 10);
+            $table->string('name', 100);
+            $table->string('furigana', 100)->nullable();
+            $table->string('gender', 10)->nullable();
+            $table->date('birthday')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('users');
     }
 };
