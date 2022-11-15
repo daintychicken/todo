@@ -14,18 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('todolists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('user_id', 10)->unsigned();
+            $table->id();
+            // 外部キーを設定する
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name', 40);
-            $table->string('text', 255);
+            $table->string('text', 255)->nullable();
             $table->integer('status')->default(1);
-            $table->date('limit_date');
-            $table->date('completion_date');
+            $table->date('limit_date')->nullable();
+            $table->date('completion_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            // 外部キーを設定する
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

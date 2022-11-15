@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Todo extends Model
+class Todolist extends Model
 {
     use HasFactory;
-    protected $fillable = ['todo_title', 'todo_content'];
+
+    use SoftDeletes;
 }
