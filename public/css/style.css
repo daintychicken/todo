@@ -9,12 +9,17 @@ body {
     margin: 30px auto;
 }
 
-.right {
-    float: right;
-}
-
 h1 {
     text-align: left;
+}
+
+.head {
+    text-align: center;
+    color: #727272;
+}
+
+.form search {
+    border: 1px solid #727272;
 }
 
 .login-page {

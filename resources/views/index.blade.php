@@ -15,10 +15,49 @@
 
 <body>
     <h1>Todoリスト</h1>
-    <button class="right" type="button" class="btn btn-secondary btn-sm" disabled>ログアウト</button>
-    <input type="submit" value="新規登録" />
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-light btn-sm" disabled>ログアウト</button>
+    </div>
+    <hr>
+    <br>
+    <!-- 新規登録ボタン -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-outline-dark" disabled>新規登録</button>
+    </div>
+    <br>
+
+    <!-- 検索フォーム -->
+    <table>
+        <thead>
+            <tr class="head">
+                <th>No</th>
+                <th>タスク名</th>
+                <th>期限</th>
+                <th>ステータス</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="search" name="search"
+                        value="@if (isset($search)) {{ $search }} @endif"></td>
+                <td><input type="search" name="search"
+                        value="@if (isset($search)) {{ $search }} @endif"></td>
+                <td><input type="search" name="search"
+                        value="@if (isset($search)) {{ $search }} @endif"></td>
+                <td><input type="search" name="search"
+                        value="@if (isset($search)) {{ $search }} @endif"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div class="d-grid gap-2 justify-content-md-end">
+        <button type="button" class="btn btn-outline-dark btn-sm" disabled>検索</button>
+        <button type="button" class="btn btn-outline-dark btn-sm" disabled>クリア</button>
+    </div>
+
+    <!-- Todoリスト表示 -->
     <div class="todolists">
-        <table class="table">
+        <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">No</th>
@@ -37,6 +76,12 @@
                         <td>{{ $todo->name }}</td>
                         <td>{{ $todo->limit_date }}</td>
                         <td>{{ $todo->status }}</td>
+                        <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
+                                style="width:2rem;height:2rem;">＋</button></td>
+                        <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
+                                style="width:2rem;height:2rem;">＋</button></td>
+                        <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"
+                                style="width:2rem;height:2rem;">！</button></td>
                     </tr>
                 @endforeach
             </tbody>
