@@ -10,33 +10,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <title>新規登録</title>
+    <title>タスク詳細</title>
 </head>
 
 <body>
     <section class="contents">
-        <h2>新規登録</h2>
-        <!-- 登録フォーム -->
+        <h2>タスク詳細</h2>
+        <!-- 詳細画面 -->
         <table class="table2">
-            <tr class="tr">
-                <td>タスク名</td>
-                <td><input type="text" class="txt2" name="name"></td>
+            <tr>
+                <td class="td">タスク名</td>
+                <td class="txt3">なまえ</td>
             </tr>
-            <tr class="tr">
-                <td>タスク詳細</td>
-                <td><input type="text" class="txt2" name="text"></td>
+            <tr>
+                <td class="td">タスク詳細</td>
+                <td class="txt3">めも</td>
             </tr>
-            <tr class="tr">
-                <td>期限</td>
-                <td><input type="text" class="txt2" name="limitdate"></td>
+            <tr>
+                <td class="td">期限</td>
+                <td class="txt3">きげん</td>
+            </tr>
+            <tr>
+                <td class="td">ステータス</td>
+                <td class="txt3">すてーたす</td>
+                {{-- ???
+                if $limit_date == 1 進行中
+                else if isset($completion_date) 完了
+                else if $limit_date > $completion_date 期限ぎれ --}}
+            </tr>
+            <tr>
+                <td class="td">完了日</td>
+                <td class="txt3">2022-11-16</td>
             </tr>
         </table>
 
         <!-- ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark" margin><a href="{{ url('/todolists') }}">登録</a></button>
-            <span class="margin"></span>
-            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">キャンセル</a></button>
+            <button type="button" class="btn btn-outline-dark" margin><a
+                    href="{{ url('/todolists') }}">タスク一覧に戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->

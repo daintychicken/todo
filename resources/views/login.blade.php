@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <img src="{{ asset('img/nyan2.png') }}" width="300">
+    <img src="{{ asset('img/nyan2.png') }}" width="350">
     <div class="login-page">
         <div class="form">
             @csrf
@@ -16,10 +16,11 @@
             <input type="text" />
             <p>パスワード</p>
             <input type="password" />
-            <button>ログイン</button>
+            <button><a href="{{ url('/todolists') }}">ログイン</a></button>
             </form>
         </div>
     </div>
+
 
 
 </body>

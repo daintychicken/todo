@@ -1,11 +1,14 @@
 /* 共通のCSS */
 body {
+    background: linear-gradient(90deg, #f0bc68d3 0%, #f0bc68d3 50%, #c4d7d1 50%, #c4d7d1 100%);
     width: 850px;
+    height: auto;
     margin: 100px auto;
     color: rgb(68, 68, 68);
 }
 
 .contents {
+    background-color: rgb(253, 252, 249);
     padding: 70px;
     border: 2px solid rgb(109, 97, 80);
     border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
@@ -13,8 +16,6 @@ body {
 
 h2 {
     color: rgb(109, 97, 80);
-    border-bottom: #f8c994 5px dashed;
-    display: inline-block;
 }
 
 .margin {
@@ -24,10 +25,11 @@ h2 {
 /* Todoリスト画面のCSS */
 .logout {
     width: 100%;
+    font-size: 14px;
     text-align: right;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0);
     color: rgb(109, 97, 80);
 }
 
@@ -36,14 +38,13 @@ h2 {
     outline: none;
     width: 10em;
     max-width: 100%;
-    padding: 0.5em;
     border-bottom: solid 1px rgb(68, 68, 68);
-    box-sizing: border-box;
 }
 
 .table1 {
+    font-size: 14px;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     width: 100%;
     text-align: center;
 }
@@ -52,7 +53,7 @@ h2 {
     margin-top: 10px;
 }
 
-/* 新規登録画面のCSS */
+/* 新規登録、編集画面のCSS */
 .table2 {
     text-align: center;
     margin: 80px auto;
@@ -62,8 +63,22 @@ h2 {
 .txt2 {
     border: none;
     outline: none;
-    width: 300px;
+    width: 400px;
+    padding: 3px 10px 3px 10px;
+    margin: 5px;
+    border: solid 1px rgb(68, 68, 68);
+}
+
+/* 詳細画面のCSS */
+.txt3 {
+    border: none;
+    outline: none;
+    width: 70%;
     padding: 10px;
+    margin: 5px;
     border-bottom: solid 1px rgb(68, 68, 68);
-    box-sizing: border-box;
+}
+
+.td {
+    width: 30%;
 }

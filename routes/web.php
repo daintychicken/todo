@@ -18,3 +18,11 @@ Route::get('/login', function() {
 Route::get('/add', function() {
     return view('add');
 });
+
+Route::get('/detail', function() {
+    return view('detail');
+});
+
+Route::get('/edit', function() {
+    return view('edit');
+});

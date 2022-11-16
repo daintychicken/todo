@@ -1,6 +1,8 @@
 /* ログイン画面のCSS */
 body {
-    width: 780px;
+    background: linear-gradient(90deg, #f0bc68d3 0%, #f0bc68d3 50%, #c4d7d1 50%, #c4d7d1 100%);
+    /* background: linear-gradient(90deg, #f0bc68 0%, #f0bc68 50%, #c4d7d1 50%, #c4d7d1 100%); */
+    width: 900px;
     margin: 100px auto;
 }
 

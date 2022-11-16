@@ -15,7 +15,7 @@
 
 <body>
     <section class="contents">
-        <button type="button" class="logout">ログアウト</button>
+        <button type="button" class="logout"><a href="{{ url('/login') }}">ログアウト</a></button>
         <h2>Todoリスト</h2>
         <!-- 検索フォーム -->
         <table class="table1">
@@ -43,12 +43,20 @@
 
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark">新規登録</button>
+            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/add') }}">新規登録 <svg
+                        xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path>
+                        <path d="M16 7h4"></path>
+                        <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path>
+                    </svg></a></button>
         </div>
 
         <!-- Todoリスト表示 -->
         <div class="todolists">
-            <table class="table table-striped">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" class="text-dark">No</th>
@@ -68,9 +76,9 @@
                             <td class="text-dark">{{ $todo->limit_date }}</td>
                             <td class="text-dark">{{ $todo->status }}</td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;">＋</button></td>
+                                    style="width:2rem;height:2rem;"><a href="{{ url('/detail') }}">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;">＋</button></td>
+                                    style="width:2rem;height:2rem;"><a href="{{ url('/edit') }}">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"
                                     style="width:2rem;height:2rem;">！</button></td>
                         </tr>
