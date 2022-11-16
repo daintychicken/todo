@@ -18,21 +18,23 @@
         <h2>タスク詳細</h2>
         <!-- 詳細画面 -->
         <table class="table2">
+            @csrf
+            @method('PUT')
             <tr>
                 <td class="td">タスク名</td>
-                <td class="txt3">なまえ</td>
+                <td class="txt3" name="name" value="{{ $todolists->name }}"></td>
             </tr>
             <tr>
                 <td class="td">タスク詳細</td>
-                <td class="txt3">めも</td>
+                <td class="txt3" name="text" value="{{ $todolists->text }}"></td>
             </tr>
             <tr>
                 <td class="td">期限</td>
-                <td class="txt3">きげん</td>
+                <td class="txt3" name="limit_date" value="{{ $todolists->limit_date }}"></td>
             </tr>
             <tr>
                 <td class="td">ステータス</td>
-                <td class="txt3">すてーたす</td>
+                <td class="txt3" name="status" value="{{ $todolists->status }}"></td>
                 {{-- ???
                 if $limit_date == 1 進行中
                 else if isset($completion_date) 完了
@@ -40,7 +42,7 @@
             </tr>
             <tr>
                 <td class="td">完了日</td>
-                <td class="txt3">2022-11-16</td>
+                <td class="txt3" name="completion_date" value="{{ $todolists->completion_date }}"></td>
             </tr>
         </table>
 
