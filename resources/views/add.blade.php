@@ -17,26 +17,31 @@
     <section class="contents">
         <h2>新規登録</h2>
         <!-- 登録フォーム -->
-        <table class="table2">
-            <tr class="tr">
-                <td>タスク名</td>
-                <td><input type="text" class="txt2" name="name"></td>
-            </tr>
-            <tr class="tr">
-                <td>タスク詳細</td>
-                <td><input type="text" class="txt2" name="text"></td>
-            </tr>
-            <tr class="tr">
-                <td>期限</td>
-                <td><input type="text" class="txt2" name="limitdate"></td>
-            </tr>
-        </table>
-
-        <!-- ボタン -->
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark" margin><a href="{{ url('/todolists') }}">登録</a></button>
-            <span class="margin"></span>
-            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">キャンセル</a></button>
+        <form method="post" action="{{ route('todolists.store') }}">
+            @csrf
+            <table class="table2">
+                <tr class="tr">
+                    <td>ユーザー名</td>
+                    <td><input type="text" class="txt2" name="user_id"></td>
+                </tr>
+                <tr class="tr">
+                    <td>タスク名</td>
+                    <td><input type="text" class="txt2" name="name"></td>
+                </tr>
+                <tr class="tr">
+                    <td>タスク詳細</td>
+                    <td><input type="text" class="txt2" name="text"></td>
+                </tr>
+                <tr class="tr">
+                    <td>期限</td>
+                    <td><input type="text" class="txt2" name="limit_date"></td>
+                </tr>
+            </table>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-outline-dark" margin>登録</button>
+                <span class="margin"></span>
+        </form>
+        <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">タスク一覧に戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->

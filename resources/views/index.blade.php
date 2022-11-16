@@ -23,7 +23,6 @@
                 <tr>
                     <th>No</th>
                     <th>タスク名</th>
-                    {{-- <th>期限</th> --}}
                     <th>ステータス</th>
                     <th></th>
                     <th></th>
@@ -33,7 +32,6 @@
                 <tr>
                     <td><input type="text" class="txt1" name="search"></td>
                     <td><input type="text" class="txt1" name="search"></td>
-                    {{-- <td><input type="text" name="search"></td> --}}
                     <td><input type="text" class="txt1" name="search"></td>
                     <td><button type="button" class="btn btn-outline-dark btn-sm">検索</button></td>
                     <td><button type="button" class="btn btn-outline-dark btn-sm">クリア</button></td>
@@ -76,7 +74,8 @@
                             <td class="text-dark">{{ $todo->limit_date }}</td>
                             <td class="text-dark">{{ $todo->status }}</td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;"><a href="{{ url('/detail') }}">＋</a></button></td>
+                                    style="width:2rem;height:2rem;"><a
+                                        href="{{ url('/detail', $todo->id) }}">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
                                     style="width:2rem;height:2rem;"><a href="{{ url('/edit') }}">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"

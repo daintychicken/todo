@@ -40,7 +40,7 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="button" class="btn btn-outline-dark" margin><a href="{{ url('/todolists') }}">更新</a></button>
             <span class="margin"></span>
-            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">キャンセル</a></button>
+            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">タスク一覧に戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->
