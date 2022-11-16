@@ -1,67 +1,84 @@
+/* 共通のCSS */
 body {
-    width: 780px;
+    background: linear-gradient(90deg, #f0bc68d3 0%, #f0bc68d3 50%, #c4d7d1 50%, #c4d7d1 100%);
+    width: 850px;
+    height: auto;
     margin: 100px auto;
-    background: #ffffff;
-    background: rgb(255, 255, 255);
+    color: rgb(68, 68, 68);
+}
+
+.contents {
+    background-color: rgb(253, 252, 249);
+    padding: 70px;
+    border: 2px solid rgb(109, 97, 80);
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+}
+
+h2 {
+    color: rgb(109, 97, 80);
+}
+
+.margin {
+    margin-right: 10px;
+}
+
+/* Todoリスト画面のCSS */
+.logout {
+    width: 100%;
+    font-size: 14px;
+    text-align: right;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(109, 97, 80);
+}
+
+.txt1 {
+    border: none;
+    outline: none;
+    width: 10em;
+    max-width: 100%;
+    border-bottom: solid 1px rgb(68, 68, 68);
+}
+
+.table1 {
+    font-size: 14px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    width: 100%;
+    text-align: center;
 }
 
 .todolists {
-    margin: 30px auto;
+    margin-top: 10px;
 }
 
-h1 {
-    text-align: left;
-}
-
-.head {
+/* 新規登録、編集画面のCSS */
+.table2 {
     text-align: center;
-    color: #727272;
+    margin: 80px auto;
+    width: 100%;
 }
 
-.form search {
-    border: 1px solid #727272;
-}
-
-.login-page {
-    float: right;
-    width: 400px;
-    margin: auto;
-    color: grey;
-    font-size: 14px;
-}
-
-.form {
-    background: #fffefe;
-    /* border: 2px solid rgb(109, 109, 109);
-    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px; */
-    max-width: 400px;
-    margin: 0 auto 20px;
-    padding: 25px;
-    text-align: center;
-}
-
-.form input {
+.txt2 {
     border: none;
     outline: none;
-    border-bottom: 1px solid rgb(109, 109, 109);
-    padding: 5px 10px;
-    margin: 0 0 15px;
+    width: 400px;
+    padding: 3px 10px 3px 10px;
+    margin: 5px;
+    border: solid 1px rgb(68, 68, 68);
 }
 
-.form button {
-    text-transform: uppercase;
-    outline: 0;
-    background: #C6C09C;
-    width: 50%;
-    border: 0;
-    margin-top: 10px;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
+/* 詳細画面のCSS */
+.txt3 {
+    border: none;
+    outline: none;
+    width: 70%;
+    padding: 10px;
+    margin: 5px;
+    border-bottom: solid 1px rgb(68, 68, 68);
 }
 
-.form button:hover,
-.form button:active,
-.form button:focus {
-    background: #979276;
+.td {
+    width: 30%;
 }

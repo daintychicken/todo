@@ -14,79 +14,79 @@
 </head>
 
 <body>
-    <h1>Todoリスト</h1>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-light btn-sm" disabled>ログアウト</button>
-    </div>
-    <hr>
-    <br>
-    <!-- 新規登録ボタン -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-outline-dark" disabled>新規登録</button>
-    </div>
-    <br>
-
-    <!-- 検索フォーム -->
-    <table>
-        <thead>
-            <tr class="head">
-                <th>No</th>
-                <th>タスク名</th>
-                <th>期限</th>
-                <th>ステータス</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="search" name="search"
-                        value="@if (isset($search)) {{ $search }} @endif"></td>
-                <td><input type="search" name="search"
-                        value="@if (isset($search)) {{ $search }} @endif"></td>
-                <td><input type="search" name="search"
-                        value="@if (isset($search)) {{ $search }} @endif"></td>
-                <td><input type="search" name="search"
-                        value="@if (isset($search)) {{ $search }} @endif"></td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <div class="d-grid gap-2 justify-content-md-end">
-        <button type="button" class="btn btn-outline-dark btn-sm" disabled>検索</button>
-        <button type="button" class="btn btn-outline-dark btn-sm" disabled>クリア</button>
-    </div>
-
-    <!-- Todoリスト表示 -->
-    <div class="todolists">
-        <table class="table table-striped">
-            <thead class="thead-dark">
+    <section class="contents">
+        <button type="button" class="logout"><a href="{{ url('/login') }}">ログアウト</a></button>
+        <h2>Todoリスト</h2>
+        <!-- 検索フォーム -->
+        <table class="table1">
+            <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">タスク名</th>
-                    <th scope="col">期限</th>
-                    <th scope="col">ステータス</th>
-                    <th scope="col">詳細</th>
-                    <th scope="col">編集</th>
-                    <th scope="col">削除</th>
+                    <th>No</th>
+                    <th>タスク名</th>
+                    {{-- <th>期限</th> --}}
+                    <th>ステータス</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($todolists as $todo)
-                    <tr>
-                        <td>{{ $todo->id }}</td>
-                        <td>{{ $todo->name }}</td>
-                        <td>{{ $todo->limit_date }}</td>
-                        <td>{{ $todo->status }}</td>
-                        <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                style="width:2rem;height:2rem;">＋</button></td>
-                        <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                style="width:2rem;height:2rem;">＋</button></td>
-                        <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"
-                                style="width:2rem;height:2rem;">！</button></td>
-                    </tr>
-                @endforeach
+                <tr>
+                    <td><input type="text" class="txt1" name="search"></td>
+                    <td><input type="text" class="txt1" name="search"></td>
+                    {{-- <td><input type="text" name="search"></td> --}}
+                    <td><input type="text" class="txt1" name="search"></td>
+                    <td><button type="button" class="btn btn-outline-dark btn-sm">検索</button></td>
+                    <td><button type="button" class="btn btn-outline-dark btn-sm">クリア</button></td>
+                </tr>
             </tbody>
-    </div>
-    </table>
+        </table>
+
+        <!-- 新規登録ボタン -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-outline-dark"><a href="{{ url('/add') }}">新規登録 <svg
+                        xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path>
+                        <path d="M16 7h4"></path>
+                        <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path>
+                    </svg></a></button>
+        </div>
+
+        <!-- Todoリスト表示 -->
+        <div class="todolists">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-dark">No</th>
+                        <th scope="col" class="text-dark">タスク名</th>
+                        <th scope="col" class="text-dark">期限</th>
+                        <th scope="col" class="text-dark">ステータス</th>
+                        <th scope="col" class="text-dark">詳細</th>
+                        <th scope="col" class="text-dark">編集</th>
+                        <th scope="col" class="text-dark">削除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($todolists as $todo)
+                        <tr>
+                            <td class="text-dark">{{ $todo->id }}</td>
+                            <td class="text-dark">{{ $todo->name }}</td>
+                            <td class="text-dark">{{ $todo->limit_date }}</td>
+                            <td class="text-dark">{{ $todo->status }}</td>
+                            <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
+                                    style="width:2rem;height:2rem;"><a href="{{ url('/detail') }}">＋</a></button></td>
+                            <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
+                                    style="width:2rem;height:2rem;"><a href="{{ url('/edit') }}">＋</a></button></td>
+                            <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"
+                                    style="width:2rem;height:2rem;">！</button></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+        </div>
+        </table>
+    </section>
 
 
     <!-- Optional JavaScript -->
