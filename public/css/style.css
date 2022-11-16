@@ -1,67 +1,69 @@
+/* 共通のCSS */
 body {
-    width: 780px;
+    width: 850px;
     margin: 100px auto;
-    background: #ffffff;
-    background: rgb(255, 255, 255);
+    color: rgb(68, 68, 68);
+}
+
+.contents {
+    padding: 70px;
+    border: 2px solid rgb(109, 97, 80);
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+}
+
+h2 {
+    color: rgb(109, 97, 80);
+    border-bottom: #f8c994 5px dashed;
+    display: inline-block;
+}
+
+.margin {
+    margin-right: 10px;
+}
+
+/* Todoリスト画面のCSS */
+.logout {
+    width: 100%;
+    text-align: right;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: rgb(109, 97, 80);
+}
+
+.txt1 {
+    border: none;
+    outline: none;
+    width: 10em;
+    max-width: 100%;
+    padding: 0.5em;
+    border-bottom: solid 1px rgb(68, 68, 68);
+    box-sizing: border-box;
+}
+
+.table1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    text-align: center;
 }
 
 .todolists {
-    margin: 30px auto;
+    margin-top: 10px;
 }
 
-h1 {
-    text-align: left;
-}
-
-.head {
+/* 新規登録画面のCSS */
+.table2 {
     text-align: center;
-    color: #727272;
+    margin: 80px auto;
+    width: 100%;
 }
 
-.form search {
-    border: 1px solid #727272;
-}
-
-.login-page {
-    float: right;
-    width: 400px;
-    margin: auto;
-    color: grey;
-    font-size: 14px;
-}
-
-.form {
-    background: #fffefe;
-    /* border: 2px solid rgb(109, 109, 109);
-    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px; */
-    max-width: 400px;
-    margin: 0 auto 20px;
-    padding: 25px;
-    text-align: center;
-}
-
-.form input {
+.txt2 {
     border: none;
     outline: none;
-    border-bottom: 1px solid rgb(109, 109, 109);
-    padding: 5px 10px;
-    margin: 0 0 15px;
-}
-
-.form button {
-    text-transform: uppercase;
-    outline: 0;
-    background: #C6C09C;
-    width: 50%;
-    border: 0;
-    margin-top: 10px;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-}
-
-.form button:hover,
-.form button:active,
-.form button:focus {
-    background: #979276;
+    width: 300px;
+    padding: 10px;
+    border-bottom: solid 1px rgb(68, 68, 68);
+    box-sizing: border-box;
 }

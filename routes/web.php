@@ -10,3 +10,11 @@ Route::get('/', function () {
 
 Route::resource('todolists', TodoController::class);
 
+// テスト用
+Route::get('/login', function() {
+    return view('login');
+});
+
+Route::get('/add', function() {
+    return view('add');
+});
