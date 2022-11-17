@@ -18,38 +18,56 @@
         <h2>タスク詳細</h2>
         <!-- 詳細画面 -->
         <table class="table2">
-            @csrf
-            @method('PUT')
             <tr>
                 <td class="td">タスク名</td>
-                <td class="txt3" name="name" value="{{ $todolists->name }}"></td>
+                <td>
+                    <p class="txt3">{{ $todolists->name }}</p>
+                </td>
             </tr>
             <tr>
                 <td class="td">タスク詳細</td>
-                <td class="txt3" name="text" value="{{ $todolists->text }}"></td>
+                <td>
+                    <p class="txt3">{{ $todolists->text }}</p>
+                </td>
             </tr>
             <tr>
                 <td class="td">期限</td>
-                <td class="txt3" name="limit_date" value="{{ $todolists->limit_date }}"></td>
+                <td>
+                    <p class="txt3">{{ $todolists->limit_date }}</p>
+                </td>
             </tr>
             <tr>
                 <td class="td">ステータス</td>
-                <td class="txt3" name="status" value="{{ $todolists->status }}"></td>
-                {{-- ???
-                if $limit_date == 1 進行中
-                else if isset($completion_date) 完了
-                else if $limit_date > $completion_date 期限ぎれ --}}
+                <td>
+                    @php
+                        $today = date('Y/m/d');
+                        $flag1 = strtotime($todolists->completion_date) > strtotime($todolists->limit_date);
+                        $flag2 = strtotime($today) > strtotime($todolists->limit_date);
+                    @endphp
+
+                    @if ($todolists->limit_date == null)
+                        <p class="txt3">進行中</p>
+                    @elseif ($flag1 || $flag2)
+                        <p class="txt3">期限切れ</p>
+                    @elseif (isset($todolists->completion_date))
+                        <p class="txt3">完了</p>
+                    @else
+                        <p class="txt3">進行中</p>
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td class="td">完了日</td>
-                <td class="txt3" name="completion_date" value="{{ $todolists->completion_date }}"></td>
+                <td>
+                    <p class="txt3">{{ $todolists->completion_date }}</p>
+                </td>
             </tr>
         </table>
 
         <!-- ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark" margin><a
-                    href="{{ url('/todolists') }}">タスク一覧に戻る</a></button>
+            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todolists.index') }}"
+                    class="text-dark">タスク一覧に戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->

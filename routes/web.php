@@ -10,19 +10,21 @@ Route::get('/', function () {
 
 Route::resource('todolists', TodoController::class);
 
+
+
 // テスト用
-Route::get('/login', function() {
-    return view('login');
-});
+// Route::get('/login', function() {
+//     return view('login');
+// });
 
-Route::get('/add', function() {
-    return view('add');
-});
+// Route::get('/create', function() {
+//     return view('create');
+// });
 
-Route::get('/detail', function() {
-    return view('detail');
-});
+// Route::get('/show', function() {
+//     return view('show');
+// });
 
-Route::get('/edit', function() {
-    return view('edit');
-});
+// Route::get('/edit', function() {
+//     return view('edit');
+// });

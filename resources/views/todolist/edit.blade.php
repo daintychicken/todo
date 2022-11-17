@@ -10,38 +10,43 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <title>新規登録</title>
+    <title>編集</title>
 </head>
 
 <body>
     <section class="contents">
-        <h2>新規登録</h2>
-        <!-- 登録フォーム -->
-        <form method="post" action="{{ route('todolists.store') }}">
-            @csrf
-            <table class="table2">
-                <tr class="tr">
-                    <td>ユーザー名</td>
-                    <td><input type="text" class="txt2" name="user_id"></td>
-                </tr>
-                <tr class="tr">
+        <h2>タスク編集</h2>
+        <!-- 編集フォーム -->
+        <table class="table2">
+            <form method="post" action="{{ route('todolists.update', $todolists->id) }}">
+                @csrf
+                @method('PUT')
+                <tr>
                     <td>タスク名</td>
-                    <td><input type="text" class="txt2" name="name"></td>
+                    <td><input type="text" class="txt2" name="name" value="{{ $todolists->name }}"></td>
                 </tr>
-                <tr class="tr">
+                <tr>
                     <td>タスク詳細</td>
-                    <td><input type="text" class="txt2" name="text"></td>
+                    <td><input type="text" class="txt2" name="text" value="{{ $todolists->text }}"></td>
                 </tr>
-                <tr class="tr">
+                <tr>
                     <td>期限</td>
-                    <td><input type="text" class="txt2" name="limit_date"></td>
+                    <td><input type="text" class="txt2" name="limit_date" value="{{ $todolists->limit_date }}">
+                    </td>
                 </tr>
-            </table>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="submit" class="btn btn-outline-dark" margin>登録</button>
-                <span class="margin"></span>
-        </form>
-        <button type="button" class="btn btn-outline-dark"><a href="{{ url('/todolists') }}">タスク一覧に戻る</a></button>
+                <tr>
+                    <td>完了日</td>
+                    <td><input type="text" class="txt2" name="completion_date"
+                            value="{{ $todolists->completopm_date }}"></td>
+                </tr>
+        </table>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-outline-dark" margin>更新</button>
+            <span class="margin"></span>
+            </form>
+
+            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todolists.index') }}"
+                    class="text-dark">タスク一覧に戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->
