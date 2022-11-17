@@ -3,26 +3,32 @@
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
+//トップページ
+Route::get('/', [TodoController::class, 'index'])->name('todo.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//新規登録
+Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
+Route::post('/store', 'App\Http\Controllers\TodoController@store');
 
-Route::resource('todolists', TodoController::class);
+//編集ページ
+Route::get('/edit/{id}', [TodoController::class, 'edit'])->name('todo.edit');
+Route::put('/update', 'App\Http\Controllers\TodoController@update');
 
-// テスト用
-Route::get('/login', function() {
-    return view('login');
-});
+//詳細
+Route::get('/show/{id}', [TodoController::class, 'show'])->name('todo.show');
 
-Route::get('/add', function() {
-    return view('add');
-});
+//削除
+Route::post('/delete/{id}', 'App\Http\Controllers\TodoController@softDeletes')->name('todo.delete');
 
-Route::get('/detail', function() {
-    return view('detail');
-});
+//ログイン
+Route::post('/login', 'App\Http\Controllers\LoginController@login')->name('todo.login');
 
-Route::get('/edit', function() {
-    return view('edit');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::resource('todolists', TodoController::class);
+
+Route::get('/login', function () {
+     return view('todolist.login');
+ });
