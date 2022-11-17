@@ -41,8 +41,7 @@
 
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark"><a href="{{ route('todolists.create') }}"
-                    class="text-dark">新規登録</a>
+            <button type="button" class="btn btn-outline-dark"><a href="/create" class="text-dark">新規登録</a>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -91,14 +90,19 @@
                             </td>
 
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;"><a href="{{ route('todolists.show', $todo->id) }}"
+                                    style="width:2rem;height:2rem;"><a href="/show/{{ $todo->id }}"
                                         class="text-dark">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;"><a href="{{ route('todolists.edit', $todo->id) }}"
+                                    style="width:2rem;height:2rem;"><a
+                                        href="{{ route('todo.edit', ['id' => $todo->id]) }}"
                                         class="text-dark">＋</a></button></td>
-                            <td><button type="button" class="btn btn-outline-danger rounded-circle p-0"
-                                    style="width:2rem;height:2rem;"><a href="{{ route('todolists.index') }}"
-                                        class="text-danger">！</a></button></td>
+                            <td>
+                                <form action="/delete/{{ $todo->id }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger rounded-circle p-0"
+                                        style="width:2rem;height:2rem;">！</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

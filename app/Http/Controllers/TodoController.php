@@ -9,8 +9,10 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todolists = Todolist::all();
-        return view('todolist.index', compact('todolists'));
+        $todolists = Todolist::orderBy('limit_date')->get();
+        return view('todolist.index', [
+            "todolists" => $todolists
+        ]);
     }
 
     public function create()
@@ -23,14 +25,14 @@ class TodoController extends Controller
 
         try {
             DB::beginTransaction();
-            $todo  =  new Todolist();
-            $todo->user_id = 1;
-            $todo->name  =  $request->name;
-            $todo->text  =  $request->text;
-            $todo->limit_date  =  $request->limit_date;
-            $todo->save();
+            $todolists  =  new Todolist();
+            $todolists->user_id = 1;
+            $todolists->name  =  $request->name;
+            $todolists->text  =  $request->text;
+            $todolists->limit_date  =  $request->limit_date;
+            $todolists->save();
             DB::commit();
-            return redirect()->route('todolist.index');
+            return redirect('/');
         } catch (\Exception $e) {
             DB::rollBack();
         }
@@ -40,36 +42,41 @@ class TodoController extends Controller
     public function show($id)
     {
         $todolists = Todolist::find($id);
-        return view('todolist.show', compact('todolists'));
+        return view('todolist.show', [
+            "todolists" => $todolists
+        ]);
     }
 
     public function edit($id)
     {
         $todolists = Todolist::find($id);
-        return view('todolist.edit', compact('todolists'));
+        return view('todolist.edit', [
+            "todolists" => $todolists
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         try {
             DB::beginTransaction();
-            $todo = Todolist::find($id);
-            $todo->user_id = 1;
-            $todo->name  =  $request->name;
-            $todo->text  =  $request->text;
-            $todo->limit_date  =  $request->limit_date;
-            $todo->completion_date  =  $request->completion_date;
-            $todo->save();
+            $todolists = Todolist::find($request->id);
+            $todolists->name  =  $request->name;
+            $todolists->text  =  $request->text;
+            $todolists->limit_date  =  $request->limit_date;
+            $todolists->completion_date  =  $request->completion_date;
+            $todolists->save();
             DB::commit();
-            return redirect()->route('todolist.index');
+            return redirect('/');
         } catch (\Exception $e) {
             DB::rollBack();
         }
         return back()->withInput();
     }
 
-    public function destroy($id)
+    public function softDeletes($id)
     {
-        //
+        Todolist::find($id)->delete();
+        return redirect('/');
     }
+
 }

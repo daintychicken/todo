@@ -17,7 +17,7 @@
     <section class="contents">
         <h2>新規登録</h2>
         <!-- 登録フォーム -->
-        <form method="post" action="{{ route('todolists.store') }}">
+        <form method="post" action="/store">
             @csrf
             <table class="table2">
                 <tr>
@@ -38,7 +38,7 @@
                 <span class="margin"></span>
         </form>
 
-        <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todolists.index') }}"
+        <button type="button" class="btn btn-outline-dark" margin><a href="/"
                 class="text-dark">タスク一覧に戻る</a></button>
         </div>
 

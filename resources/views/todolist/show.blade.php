@@ -66,7 +66,7 @@
 
         <!-- ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todolists.index') }}"
+            <button type="button" class="btn btn-outline-dark" margin><a href="/"
                     class="text-dark">タスク一覧に戻る</a></button>
         </div>
 

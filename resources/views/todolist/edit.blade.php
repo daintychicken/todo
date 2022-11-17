@@ -18,9 +18,10 @@
         <h2>タスク編集</h2>
         <!-- 編集フォーム -->
         <table class="table2">
-            <form method="post" action="{{ route('todolists.update', $todolists->id) }}">
+            <form method="post" action="/update">
                 @csrf
                 @method('PUT')
+                <input type="hidden" name="id" value="{{ $todolists->id }}">
                 <tr>
                     <td>タスク名</td>
                     <td><input type="text" class="txt2" name="name" value="{{ $todolists->name }}"></td>
@@ -45,7 +46,7 @@
             <span class="margin"></span>
             </form>
 
-            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todolists.index') }}"
+            <button type="button" class="btn btn-outline-dark" margin><a href="/"
                     class="text-dark">タスク一覧に戻る</a></button>
         </div>
 
