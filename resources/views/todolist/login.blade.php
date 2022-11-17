@@ -16,7 +16,7 @@
             <input type="text" />
             <p>パスワード</p>
             <input type="password" />
-            <button><a href="{{ url('/todolists') }}">ログイン</a></button>
+            <button><a href="{{ route('todo.index') }}">ログイン</a></button>
             </form>
         </div>
     </div>

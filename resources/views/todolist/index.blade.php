@@ -15,7 +15,7 @@
 
 <body>
     <section class="contents">
-        <button type="button" class="logout"><a href="{{ url('/login') }}" class="text-dark">ログアウト</a></button>
+        <button type="button" class="logout"><a href="/login" class="text-dark">ログアウト</a></button>
         <h2>Todoリスト</h2>
         <!-- 検索フォーム -->
         <table class="table1">
@@ -90,14 +90,15 @@
                             </td>
 
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
-                                    style="width:2rem;height:2rem;"><a href="/show/{{ $todo->id }}"
+                                    style="width:2rem;height:2rem;"><a
+                                        href="{{ route('todo.show', ['id' => $todo->id]) }}"
                                         class="text-dark">＋</a></button></td>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
                                     style="width:2rem;height:2rem;"><a
                                         href="{{ route('todo.edit', ['id' => $todo->id]) }}"
                                         class="text-dark">＋</a></button></td>
                             <td>
-                                <form action="/delete/{{ $todo->id }}" method="POST">
+                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger rounded-circle p-0"
                                         style="width:2rem;height:2rem;">！</button>

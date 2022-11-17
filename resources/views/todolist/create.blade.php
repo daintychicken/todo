@@ -38,7 +38,7 @@
                 <span class="margin"></span>
         </form>
 
-        <button type="button" class="btn btn-outline-dark" margin><a href="/"
+        <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todo.index') }}"
                 class="text-dark">タスク一覧に戻る</a></button>
         </div>
 
