@@ -15,29 +15,46 @@
 
 <body>
     <section class="contents">
-        <button type="button" class="logout"><a href="/login" class="text-dark">ログアウト</a></button>
+        <button type="button" class="logout"><a href="{{ route('todo.logout') }}" class="text-dark">ログアウト</a></button>
         <h2>Todoリスト</h2>
+        <!-- 検索見出し -->
+        <h3>検索 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24"
+                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <circle cx="10" cy="10" r="7"></circle>
+                <line x1="21" y1="21" x2="15" y2="15"></line>
+            </svg></h3>
+
         <!-- 検索フォーム -->
         <table class="table1">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>タスク名</th>
-                    <th>ステータス</th>
+                    <th>タスク名(部分一致)</th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" class="txt1" name="search"></td>
-                    <td><input type="text" class="txt1" name="search"></td>
-                    <td><input type="text" class="txt1" name="search"></td>
-                    <td><button type="button" class="btn btn-outline-dark btn-sm">検索</button></td>
-                    <td><button type="button" class="btn btn-outline-dark btn-sm">クリア</button></td>
+                    <form action="{{ route('todo.index') }}" method="GET">
+                        <td><input type="text" class="txt1" name="keyword" value="{{ $keyword }}"></td>
+                        <td><button type="submit" class="btn btn-outline-dark btn-sm">検索</button></td>
+                    </form>
+                    <td><button type="button" class="btn btn-outline-dark btn-sm"><a href="{{ route('todo.index') }}"
+                                class="text-dark">クリア</a></button></td>
                 </tr>
             </tbody>
         </table>
+
+        <!-- Todoリスト見出し -->
+        <h3>タスク一覧 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file" width="24"
+                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+            </svg></h3>
 
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
