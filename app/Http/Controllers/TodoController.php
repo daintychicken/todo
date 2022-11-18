@@ -7,12 +7,23 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $todolists = Todolist::orderBy('limit_date')->get();
-        return view('todolist.index', [
-            "todolists" => $todolists
-        ]);
+        $keyword = $request->input('keyword');
+        $query = Todolist::query();
+
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%");
+        }
+
+        $todolists = $query->get();
+
+        return view('todolist.index', compact('todolists', 'keyword'));
+
+        // $todolists = Todolist::orderBy('limit_date')->get();
+        // return view('todolist.index', [
+        //     "todolists" => $todolists
+        // ]);
     }
 
     public function create()
@@ -26,7 +37,7 @@ class TodoController extends Controller
         try {
             DB::beginTransaction();
             $todolists  =  new Todolist();
-            $todolists->user_id = 1;
+            $todolists->Auth::id();
             $todolists->name  =  $request->name;
             $todolists->text  =  $request->text;
             $todolists->limit_date  =  $request->limit_date;
