@@ -13,12 +13,28 @@
     <title>編集</title>
 </head>
 
+{{-- エラーが起きて、登録ができなかった場合 --}}
+@if ($errors->any())
+    <div>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                <path
+                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            <div>
+                入力内容をご確認ください。
+            </div>
+        </div>
+    </div>
+@endif
+
 <body>
     <section class="contents">
         <h2>タスク編集</h2>
         <!-- 編集フォーム -->
         <table class="table2">
-            <form method="post" action="/update">
+            <form method="post" action="{{ route('todo.update') }}">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" value="{{ $todolists->id }}">
@@ -48,6 +64,10 @@
 
             <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todo.index') }}"
                     class="text-dark">タスク一覧に戻る</a></button>
+        </div>
+
+        <div style="text-align: center">
+            <img src="{{ asset('img/chair.png') }}" width="200">
         </div>
 
         <!-- Optional JavaScript -->

@@ -7,6 +7,18 @@ body {
     color: rgb(68, 68, 68);
 }
 
+h1 {
+    color: #c4d7d1;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.411), -1px 1px 0 rgba(0, 0, 0, 0.411), 1px -1px 0 rgba(0, 0, 0, 0.411), -1px -1px 0 rgba(0, 0, 0, 0.411);
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.name {
+    color: #f0bc68d3;
+}
+
 .contents {
     background-color: rgb(253, 252, 249);
     padding: 70px;
@@ -28,9 +40,9 @@ h3 {
     color: rgb(68, 68, 68);
     position: relative;
     padding: 5px;
-    background: repeating-linear-gradient(45deg, #e7db2cda 0 3px, #fff 3px 8px);
+    background: repeating-linear-gradient(45deg, #e7db2cad 0 3px, #fff 3px 8px);
     width: 70%;
-    margin: 40px auto 20px auto;
+    margin: 40px auto 30px auto;
     text-align: center;
 }
 

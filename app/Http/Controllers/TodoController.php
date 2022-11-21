@@ -4,26 +4,29 @@ namespace App\Http\Controllers;
 use App\Models\Todolist;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
     public function index(Request $request)
     {
-        $keyword = $request->input('keyword');
-        $query = Todolist::query();
+           //ログインしているユーザーのIDを取得
+            $user_id = Auth::id();
+            //検索キーワードを取得
+            $keyword = $request->input('keyword');
+            $query = Todolist::query();
+            //もし検索キーワードが入力されていれば、検索結果を取得&ログインしているユーザーのタスクを変数に設定
+            //検索キーワードが入力されていなければ、ログインしているユーザーのタスクを変数に設定
+            if(!empty($keyword)) {
+                $query->where('name', 'LIKE', "%{$keyword}%")
+                    ->where('user_id', '=', "$user_id");
+            } else {
+                $query->where('user_id', '=', "$user_id");
+            }
+            //設定した変数の情報を期限が違い順に取得して、indexに返す
+            $todolists = $query->orderByRaw('limit_date')->get();
+            return view('todolist.index', compact('todolists', 'keyword'));
 
-        if(!empty($keyword)) {
-            $query->where('name', 'LIKE', "%{$keyword}%");
-        }
-
-        $todolists = $query->get();
-
-        return view('todolist.index', compact('todolists', 'keyword'));
-
-        // $todolists = Todolist::orderBy('limit_date')->get();
-        // return view('todolist.index', [
-        //     "todolists" => $todolists
-        // ]);
     }
 
     public function create()
@@ -33,37 +36,50 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-
+        //タスクの新規登録
         try {
             DB::beginTransaction();
             $todolists  =  new Todolist();
-            $todolists->Auth::id();
+            //ユーザーIDはログインしているユーザーのIDを取得する
+            $todolists->user_id = Auth::id();
             $todolists->name  =  $request->name;
             $todolists->text  =  $request->text;
             $todolists->limit_date  =  $request->limit_date;
             $todolists->save();
             DB::commit();
-            return redirect('/');
+            return redirect()->route('todo.index');
         } catch (\Exception $e) {
             DB::rollBack();
         }
-        return back()->withInput();
+        return back()->withErrors([
+            'error',
+        ]);
     }
 
     public function show($id)
     {
+        //受け取ったIDの情報をテーブルから取得
         $todolists = Todolist::find($id);
-        return view('todolist.show', [
-            "todolists" => $todolists
-        ]);
+        //もし、ログインしているユーザーのIDと登録されているユーザーIDが違えばエラー画面に遷移
+        if(Auth::id() != $todolists->user_id) {
+            return abort('404');
+        } else {
+            return view('todolist.show', [
+                "todolists" => $todolists
+            ]);
+        }
     }
 
     public function edit($id)
     {
         $todolists = Todolist::find($id);
-        return view('todolist.edit', [
-            "todolists" => $todolists
-        ]);
+        if(Auth::id() != $todolists->user_id) {
+            return abort('404');
+        } else {
+            return view('todolist.edit', [
+                "todolists" => $todolists
+            ]);
+        }
     }
 
     public function update(Request $request)
@@ -77,17 +93,19 @@ class TodoController extends Controller
             $todolists->completion_date  =  $request->completion_date;
             $todolists->save();
             DB::commit();
-            return redirect('/');
+            return redirect()->route('todo.index');
         } catch (\Exception $e) {
             DB::rollBack();
         }
-        return back()->withInput();
+        return back()->withErrors([
+            'error',
+        ]);
     }
 
     public function softDeletes($id)
     {
         Todolist::find($id)->delete();
-        return redirect('/');
+        return redirect()->route('todo.index');
     }
 
 }

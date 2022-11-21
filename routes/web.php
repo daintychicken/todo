@@ -1,36 +1,37 @@
 <?php
 
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'user'], function() {
-    Route::group(['middleware' => 'auth'], function(){
 
-//トップページ
-Route::get('/', [TodoController::class, 'index'])->name('todo.index');
+Route::group(['middleware' => 'auth'], function(){
 
-//新規登録
-Route::get('/user/create', [TodoController::class, 'create'])->name('todo.create');
-Route::post('/user/store', 'App\Http\Controllers\TodoController@store');
+    //トップページ
+    Route::get('/', [TodoController::class, 'index'])->name('todo.index');
 
-//編集ページ
-Route::get('/user/edit/{id}', [TodoController::class, 'edit'])->name('todo.edit');
-Route::put('/user/update', 'App\Http\Controllers\TodoController@update');
+    //新規登録
+    Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
+    Route::post('/store', [TodoController::class, 'store'])->name('todo.store');
 
-//詳細
-Route::get('/user/show/{id}', [TodoController::class, 'show'])->name('todo.show');
+    //編集ページ
+    Route::get('/edit/{id}', [TodoController::class, 'edit'])->name('todo.edit');
+    Route::put('/update', [TodoController::class, 'update'])->name('todo.update');
 
-//削除
-Route::post('/user/delete/{id}', 'App\Http\Controllers\TodoController@softDeletes')->name('todo.delete');
+    //詳細
+    Route::get('/show/{id}', [TodoController::class, 'show'])->name('todo.show');
 
-//ログアウト
-Route::get('/user/logout', 'App\Http\Controllers\LoginController@getLogout')->name('todo.logout');
-    });
+    //削除
+    Route::post('/delete/{id}', [TodoController::class, 'softDeletes'])->name('todo.delete');
+
+    //ログアウト
+    Route::get('/logout', [LoginController::class, 'getLogout'])->name('todo.logout');
 });
 
 
+
 //ログイン
-Route::get('/login', 'App\Http\Controllers\LoginController@getSignin')->name('todo.signin');
-Route::post('/login', 'App\Http\Controllers\LoginController@postSignin');
+Route::get('/login', [LoginController::class, 'getLogin'])->name('todo.login');
+Route::post('/login', [LoginController::class, 'postLogin']);
 
 
