@@ -5,15 +5,17 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>! Todoリスト !</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <title>! Todoリスト !</title>
 </head>
 
 <body>
+    <h1>おかえりなさい<span class="name">&nbsp;★&nbsp;<?php $user = Auth::user(); ?>{{ $user->name }}</span><img
+            src="{{ asset('img/boxnyan.png') }}" width="100"></h1>
     <section class="contents">
         <button type="button" class="logout"><a href="{{ route('todo.logout') }}" class="text-dark">ログアウト</a></button>
         <h2>Todoリスト</h2>
@@ -58,7 +60,8 @@
 
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark"><a href="/create" class="text-dark">新規登録</a>
+            <button type="button" class="btn btn-outline-dark"><a href="{{ route('todo.create') }}"
+                    class="text-dark">新規登録</a>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -91,16 +94,13 @@
                             <td class="text-dark">{{ $todo->limit_date }}</td>
                             <td>
                                 @php
-                                    $today = date('Y/m/d');
-                                    $flag1 = strtotime($todo->completion_date) > strtotime($todo->limit_date);
-                                    $flag2 = strtotime($today) > strtotime($todo->limit_date);
+                                    $today = date('Y-m-d');
+                                    $flag1 = $today > $todo->limit_date;
                                 @endphp
-                                @if ($todo->limit_date == null)
-                                    <p>進行中</p>
-                                @elseif ($flag1 || $flag2)
-                                    <p>期限切れ</p>
-                                @elseif (isset($todo->completion_date))
+                                @if ($todo->completion_date)
                                     <p>完了</p>
+                                @elseif ($todo->limit_date && $todo->limit_date < $today)
+                                    <p>期限切れ</p>
                                 @else
                                     <p>進行中</p>
                                 @endif

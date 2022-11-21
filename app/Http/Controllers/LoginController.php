@@ -13,19 +13,14 @@ use Illuminate\Support\Str;
 class LoginController extends Controller
 {
     //ログインページの表示
-    public function getSignin()
+    public function getLogin()
     {
-    // dd(Hash::make('admin'));
     return view('todolist.login');
     }
 
     //ログイン認証
-    public function postSignin(Request $request)
+    public function postLogin(Request $request)
     {
-    // $this->validate($request,[
-    // 'login_id' => ['required'],
-    // 'password' => ['required'],
-    // ]);
     if (Auth::attempt(['login_id' => $request->input('login_id'), 'password' => $request->input('password')])) {
         return redirect()->route('todo.index');
     }
@@ -37,7 +32,7 @@ class LoginController extends Controller
     //ログアウト
     public function getLogout(){
         Auth::logout();
-        return redirect()->route('todo.signin');
+        return redirect()->route('todo.login');
         }
 }
 

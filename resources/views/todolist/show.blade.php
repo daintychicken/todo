@@ -70,6 +70,10 @@
                     class="text-dark">タスク一覧に戻る</a></button>
         </div>
 
+        <div style="text-align: center">
+            <img src="{{ asset('img/nap.png') }}" width="200">
+        </div>
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
