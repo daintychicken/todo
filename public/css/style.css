@@ -7,16 +7,32 @@ body {
     color: rgb(68, 68, 68);
 }
 
-h1 {
+.welcome {
+    width: 50%;
+    height: 100px;
+    float: left;
     color: #c4d7d1;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.411), -1px 1px 0 rgba(0, 0, 0, 0.411), 1px -1px 0 rgba(0, 0, 0, 0.411), -1px -1px 0 rgba(0, 0, 0, 0.411);
-    text-align: center;
+    text-align: right;
+    padding-top: 28px;
+    padding-right: 10px;
     font-size: 24px;
     margin-bottom: 5px;
 }
 
 .name {
+    width: 50%;
+    float: left;
     color: #f0bc68d3;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.411), -1px 1px 0 rgba(0, 0, 0, 0.411), 1px -1px 0 rgba(0, 0, 0, 0.411), -1px -1px 0 rgba(0, 0, 0, 0.411);
+    text-align: left;
+    padding-left: 10px;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.clear {
+    clear: both
 }
 
 .contents {

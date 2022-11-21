@@ -62,7 +62,7 @@ class TodoController extends Controller
         $todolists = Todolist::find($id);
         //もし、ログインしているユーザーのIDと登録されているユーザーIDが違えばエラー画面に遷移
         if(Auth::id() != $todolists->user_id) {
-            return abort('404');
+            return redirect()->route('todo.login');
         } else {
             return view('todolist.show', [
                 "todolists" => $todolists
@@ -74,7 +74,7 @@ class TodoController extends Controller
     {
         $todolists = Todolist::find($id);
         if(Auth::id() != $todolists->user_id) {
-            return abort('404');
+            return redirect()->route('todo.login');
         } else {
             return view('todolist.edit', [
                 "todolists" => $todolists
@@ -87,13 +87,17 @@ class TodoController extends Controller
         try {
             DB::beginTransaction();
             $todolists = Todolist::find($request->id);
-            $todolists->name  =  $request->name;
-            $todolists->text  =  $request->text;
-            $todolists->limit_date  =  $request->limit_date;
-            $todolists->completion_date  =  $request->completion_date;
-            $todolists->save();
-            DB::commit();
-            return redirect()->route('todo.index');
+            if(Auth::id() != $todolists->user_id) {
+                return redirect()->route('todo.login');
+            } else {
+                $todolists->name  =  $request->name;
+                $todolists->text  =  $request->text;
+                $todolists->limit_date  =  $request->limit_date;
+                $todolists->completion_date  =  $request->completion_date;
+                $todolists->save();
+                DB::commit();
+                return redirect()->route('todo.index');
+            }
         } catch (\Exception $e) {
             DB::rollBack();
         }
@@ -104,8 +108,12 @@ class TodoController extends Controller
 
     public function softDeletes($id)
     {
-        Todolist::find($id)->delete();
-        return redirect()->route('todo.index');
+        $todolists = Todolist::find($id);
+        if(Auth::id() != $todolists->user_id) {
+            return redirect()->route('todo.login');
+        } else {
+            Todolist::find($id)->delete();
+            return redirect()->route('todo.index');
+        }
     }
-
 }
