@@ -37,30 +37,26 @@
             <thead>
                 <tr>
                     <th>タスク名(部分一致)</th>
-                    <th></th>
                     <th>ステータス</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <form action="{{ route('todo.index') }}" method="GET">
-                        <td style="padding-right: 10px"><input type="text" class="txt1" name="keyword"
+                        <td style="padding-right: 15px"><input type="text" class="txt1" name="keyword"
                                 value="{{ $keyword }}"></td>
-                        <td style="padding-right: 45px"><button type="submit"
-                                class="btn btn-outline-dark btn-sm">検索</button></td>
-                    </form>
-                    <form action="{{ route('todo.index') }}" method="GET">
-                        <td style="padding-right: 10px">
+                        <td style="padding-right: 15px">
                             <select name="status">
                                 <option></option>
-                                <option value="1">進行中</option>
-                                <option value="2">完了</option>
-                                <option value="3">期限切れ</option>
+                                <option value="work">進行中</option>
+                                <option value="done">完了</option>
+                                <option value="past">期限切れ</option>
                             </select>
                         </td>
-                        <td style="padding-right: 45px"><button type="submit"
-                                class="btn btn-outline-dark btn-sm">絞り込み</button>
+                        <td style="padding-right: 15px"><button type="submit"
+                                class="btn btn-outline-dark btn-sm">検索</button></td>
                         </td>
                     </form>
                     <td><button type="button" class="btn btn-outline-success btn-sm"><a

@@ -20,24 +20,26 @@ class TodoController extends Controller
         $today = date('Y-m-d');
 
         $query = Todolist::query();
+        //ログインしているユーザーのタスクを表示する
+        $query->where('user_id', '=', $user_id);
         //もし検索キーワードが入力されていれば、検索結果を取得&ログインしているユーザーのタスクを変数に設定
-        //検索キーワードが入力されていなければ、ログインしているユーザーのタスクを変数に設定
         if(!empty($keyword)) {
-            $query->where('name', 'LIKE', "%{$keyword}%")
-                ->where('user_id', '=', "$user_id");
-        //ステータス：完了を選択されたとき
-        } elseif($status == 1) {
-            $query->where('status', '=', "1")
-                ->where('user_id', '=', "$user_id");
-        } elseif($status == 2) {
-            $query->whereNotNull('completion_date')
-                ->where('user_id', '=', "$user_id");
-        } elseif($status == 3) {
-            $query->whereNotNull('limit_date')
-                ->where('limit_date', '<', "$today")
-                ->where('user_id', '=', "$user_id");
-        } else {
-            $query->where('user_id', '=', "$user_id");
+            $query->where('name', 'LIKE', "%{$keyword}%");
+        }
+        //もしステータスが選択されていれば、ステータスの絞り込み
+        if(!empty($status)) {
+            if($status == "done") {
+                $query->whereNotNull('completion_date');
+            } elseif($status == "past") {
+                $query->whereNotNull('limit_date')
+                    ->where('limit_date', '<', "$today");
+            } elseif($status == "work") {
+                $query->where(function ($query) use ($today){
+                    $query->whereNull('completion_date')
+                    ->where('limit_date', '>', "$today")
+                    ->orwhereNull('limit_date');
+                });
+            }
         }
         //設定した変数の情報を期限が違い順に取得して、indexに返す
         $todolists = $query->orderByRaw('limit_date')->get();
