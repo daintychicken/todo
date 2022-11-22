@@ -91,9 +91,19 @@ h3::after {
 
 .table1 {
     font-size: 14px;
-    width: 400px;
-    margin: 20px auto 30px auto;
+    width: 500px;
+    margin: auto;
     text-align: center;
+}
+
+.margin1 {
+    margin: 0px 5px 0px 5px;
+}
+
+select {
+    border: none;
+    outline: none;
+    border-bottom: solid 1px rgb(68, 68, 68);
 }
 
 .todolists {

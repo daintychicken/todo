@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('login_id', 10);
             $table->string('password');
             $table->string('name', 100);
-            $table->string('furigana', 100)->nullable();
+            $table->string('dept', 100)->nullable();
             $table->string('gender', 10)->nullable();
             $table->date('birthday')->nullable();
             $table->timestamps();

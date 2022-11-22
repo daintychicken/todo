@@ -37,6 +37,7 @@
             <thead>
                 <tr>
                     <th>タスク名(部分一致)</th>
+                    <th>ステータス</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -44,9 +45,18 @@
             <tbody>
                 <tr>
                     <form action="{{ route('todo.index') }}" method="GET">
-                        <td><input type="text" class="txt1" name="keyword" value="{{ $keyword }}"></td>
-                        <td><button type="submit" class="btn btn-outline-dark btn-sm">検索</button></td>
+                        <td class="margin1"><input type="text" class="txt1" name="keyword"
+                                value="{{ $keyword }}"></td>
+                        <td class="margin1">
+                            <select name="status">
+                                <option value="1">進行中</option>
+                                <option value="2">完了</option>
+                                <option value="3">期限切れ</option>
+                            </select>
+                        </td>
+                        <td class="margin1"><button type="submit" class="btn btn-outline-dark btn-sm">検索</button></td>
                     </form>
+
                     <td><button type="button" class="btn btn-outline-dark btn-sm"><a href="{{ route('todo.index') }}"
                                 class="text-dark">クリア</a></button></td>
                 </tr>
@@ -106,7 +116,6 @@
                             <td>
                                 @php
                                     $today = date('Y-m-d');
-                                    $flag1 = $today > $todo->limit_date;
                                 @endphp
                                 @if ($todo->completion_date)
                                     <p>完了</p>

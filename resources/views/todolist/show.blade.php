@@ -40,19 +40,14 @@
                 <td class="td">ステータス</td>
                 <td>
                     @php
-                        $today = date('Y/m/d');
-                        $flag1 = strtotime($todolists->completion_date) > strtotime($todolists->limit_date);
-                        $flag2 = strtotime($today) > strtotime($todolists->limit_date);
+                        $today = date('Y-m-d');
                     @endphp
-
-                    @if ($todolists->limit_date == null)
-                        <p class="txt3">進行中</p>
-                    @elseif ($flag1 || $flag2)
-                        <p class="txt3">期限切れ</p>
-                    @elseif (isset($todolists->completion_date))
-                        <p class="txt3">完了</p>
+                    @if ($todo->completion_date)
+                        <p>完了</p>
+                    @elseif ($todo->limit_date && $todo->limit_date < $today)
+                        <p>期限切れ</p>
                     @else
-                        <p class="txt3">進行中</p>
+                        <p>進行中</p>
                     @endif
                 </td>
             </tr>

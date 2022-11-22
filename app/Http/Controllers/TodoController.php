@@ -14,11 +14,27 @@ class TodoController extends Controller
             $user_id = Auth::id();
             //検索キーワードを取得
             $keyword = $request->input('keyword');
+            //選択されたステータスを取得
+            $status = $request->input('status');
+            //期限切れ判定用
+            $today = date('Y-m-d');
+
             $query = Todolist::query();
             //もし検索キーワードが入力されていれば、検索結果を取得&ログインしているユーザーのタスクを変数に設定
             //検索キーワードが入力されていなければ、ログインしているユーザーのタスクを変数に設定
             if(!empty($keyword)) {
                 $query->where('name', 'LIKE', "%{$keyword}%")
+                    ->where('user_id', '=', "$user_id");
+            //ステータス：完了を選択されたとき
+            } elseif($status == 1) {
+                $query->where('status', '=', "1")
+                ->where('user_id', '=', "$user_id");
+            } elseif($status == 2) {
+                $query->whereNotNull('completion_date')
+                ->where('user_id', '=', "$user_id");
+            } elseif($status == 3) {
+                $query->whereNotNull('limit_date')
+                    ->where('limit_date', '<', "$today")
                     ->where('user_id', '=', "$user_id");
             } else {
                 $query->where('user_id', '=', "$user_id");
