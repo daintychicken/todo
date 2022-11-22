@@ -1,23 +1,29 @@
 /* ログイン画面のCSS */
 body {
     background: linear-gradient(90deg, #f0bc68d3 0%, #f0bc68d3 50%, #c4d7d1 50%, #c4d7d1 100%);
-    /* background: linear-gradient(90deg, #f0bc68 0%, #f0bc68 50%, #c4d7d1 50%, #c4d7d1 100%); */
     width: 900px;
     margin: 100px auto;
 }
 
+.image {
+    width: 50%;
+    float: left;
+    text-align: right;
+    padding-right: 40px;
+}
+
 .login-page {
-    float: right;
-    width: 400px;
-    margin: auto;
+    float: left;
+    width: 50%;
+    text-align: left;
+    padding-left: 40px;
     color: rgb(109, 97, 80);
     font-size: 14px;
 }
 
 .form {
     background: #fffefe;
-    max-width: 400px;
-    margin: 0 auto 20px;
+    margin: auto;
     padding: 25px;
     text-align: center;
 }
@@ -32,10 +38,10 @@ body {
 
 .form button {
     text-transform: uppercase;
-    outline: 0;
     background: #C6C09C;
     width: 50%;
-    border: 0;
+    border: none;
+    outline: none;
     margin-top: 10px;
     padding: 15px;
     color: #FFFFFF;

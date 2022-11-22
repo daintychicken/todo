@@ -42,12 +42,12 @@
                     @php
                         $today = date('Y-m-d');
                     @endphp
-                    @if ($todo->completion_date)
-                        <p>完了</p>
-                    @elseif ($todo->limit_date && $todo->limit_date < $today)
-                        <p>期限切れ</p>
+                    @if ($todolists->completion_date)
+                        <p class="txt3">完了</p>
+                    @elseif ($todolists->limit_date && $todolists->limit_date < $today)
+                        <p class="txt3">期限切れ</p>
                     @else
-                        <p>進行中</p>
+                        <p class="txt3">進行中</p>
                     @endif
                 </td>
             </tr>

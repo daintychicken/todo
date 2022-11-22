@@ -32,7 +32,9 @@
 
 <body>
     {{-- 画像 --}}
-    <img src="{{ asset('img/nyan2.png') }}" width="300">
+    <div class="image">
+        <img src="{{ asset('img/nyan2.png') }}" width="300">
+    </div>
     <div class="login-page">
         <form action="{{ route('todo.login') }}" method="post">
             <div class="form">
