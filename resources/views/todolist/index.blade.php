@@ -14,8 +14,12 @@
 </head>
 
 <body>
-    <h1>おかえりなさい<span class="name">&nbsp;★&nbsp;<?php $user = Auth::user(); ?>{{ $user->name }}</span><img
-            src="{{ asset('img/boxnyan.png') }}" width="100"></h1>
+    <div>
+        <p class="welcome">おかえりなさい</p>
+        <p class="name"><?php $user = Auth::user(); ?>{{ $user->name }}<img src="{{ asset('img/boxnyan.png') }}"
+                width="100"></p>
+    </div>
+    <div class="clear"></div>
     <section class="contents">
         <button type="button" class="logout"><a href="{{ route('todo.logout') }}" class="text-dark">ログアウト</a></button>
         <h2>Todoリスト</h2>
@@ -33,6 +37,7 @@
             <thead>
                 <tr>
                     <th>タスク名(部分一致)</th>
+                    <th>ステータス</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -40,36 +45,54 @@
             <tbody>
                 <tr>
                     <form action="{{ route('todo.index') }}" method="GET">
-                        <td><input type="text" class="txt1" name="keyword" value="{{ $keyword }}"></td>
-                        <td><button type="submit" class="btn btn-outline-dark btn-sm">検索</button></td>
+                        <td style="padding-right: 15px"><input type="text" class="txt1" name="keyword"
+                                value="{{ $keyword }}"></td>
+                        <td style="padding-right: 15px">
+                            <select name="status">
+                                <option></option>
+                                <option value="work">進行中</option>
+                                <option value="done">完了</option>
+                                <option value="past">期限切れ</option>
+                            </select>
+                        </td>
+                        <td style="padding-right: 15px"><button type="submit"
+                                class="btn btn-outline-dark btn-sm">検索</button></td>
+                        </td>
                     </form>
-                    <td><button type="button" class="btn btn-outline-dark btn-sm"><a href="{{ route('todo.index') }}"
-                                class="text-dark">クリア</a></button></td>
+                    <td><button type="button" class="btn btn-outline-success btn-sm"><a
+                                href="{{ route('todo.index') }}" class="text-success">クリア</a></button></td>
                 </tr>
             </tbody>
         </table>
 
         <!-- Todoリスト見出し -->
-        <h3>タスク一覧 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file" width="24"
+        <h3>タスク一覧
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-            </svg></h3>
+                <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"></path>
+                <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"></path>
+                <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"></path>
+                <line x1="11" y1="6" x2="20" y2="6"></line>
+                <line x1="11" y1="12" x2="20" y2="12"></line>
+                <line x1="11" y1="18" x2="20" y2="18"></line>
+            </svg>
+        </h3>
 
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="button" class="btn btn-outline-dark"><a href="{{ route('todo.create') }}"
-                    class="text-dark">新規登録</a>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path>
-                    <path d="M16 7h4"></path>
-                    <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path>
-                </svg></a></button>
+                    class="text-dark">新規登録
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-minus"
+                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M8 20l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4h4z"></path>
+                        <path d="M13.5 6.5l4 4"></path>
+                        <path d="M16 18h4"></path>
+                    </svg>
+                </a></button>
         </div>
 
         <!-- Todoリスト表示 -->
@@ -95,7 +118,6 @@
                             <td>
                                 @php
                                     $today = date('Y-m-d');
-                                    $flag1 = $today > $todo->limit_date;
                                 @endphp
                                 @if ($todo->completion_date)
                                     <p>完了</p>
