@@ -15,16 +15,14 @@
 
 <body>
     <section class="contents">
-        <h2><?php $user = Auth::user(); ?>{{ $user->name }} のマイページ</h2>
-        @if (empty($items->img_path))
+        <h2>{{ $user->name }} のマイページ</h2>
+        @if (empty($user->my_photo))
             <div class="profile">
                 <img class="img" src="{{ asset('img/usericon.png') }}">
             </div>
         @else
             <div class="profile">
-                @foreach ($items as $item)
-                    <img class="img" src="{{ Storage::url($item->img_path) }}">
-                @endforeach
+                <img class="img" src="{{ Storage::url($user->my_photo) }}">
             </div>
         @endif
         <!-- 詳細画面 -->
@@ -32,31 +30,31 @@
             <tr>
                 <td class="td">ログインID</td>
                 <td>
-                    <p class="txt3">{{ $users->login_id }}</p>
+                    <p class="txt3">{{ $user->login_id }}</p>
                 </td>
             </tr>
             <tr>
                 <td class="td">名前</td>
                 <td>
-                    <p class="txt3">{{ $users->name }}</p>
+                    <p class="txt3">{{ $user->name }}</p>
                 </td>
             </tr>
             <tr>
                 <td class="td">部署</td>
                 <td>
-                    <p class="txt3">{{ $users->dept }}</p>
+                    <p class="txt3">{{ $user->dept }}</p>
                 </td>
             </tr>
             <tr>
                 <td class="td">性別</td>
                 <td>
-                    <p class="txt3">{{ $users->gender }}</p>
+                    <p class="txt3">{{ $user->gender }}</p>
                 </td>
             </tr>
             <tr>
                 <td class="td">誕生日</td>
                 <td>
-                    <p class="txt3">{{ $users->birthday }}<svg xmlns="http://www.w3.org/2000/svg"
+                    <p class="txt3">{{ $user->birthday }}<svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-cake" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -73,8 +71,8 @@
 
         <!-- ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-outline-dark" margin><a
-                    href="{{ route('user.edit', ['id' => $users->id]) }}" class="text-dark">編集</button>
+            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('user.edit') }}"
+                    class="text-dark">編集</button>
             <span class="margin"></span>
             <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todo.index') }}"
                     class="text-dark">タスク一覧に戻る</a></button>

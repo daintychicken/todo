@@ -37,41 +37,41 @@
             <form method="post" action="{{ route('user.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-                <input type="hidden" name="id" value="{{ $users->id }}">
+                <input type="hidden" name="id" value="{{ $user->id }}">
                 <tr>
                     <td>名前</td>
-                    <td><input type="text" class="txt2" name="name" value="{{ $users->name }}"></td>
+                    <td><input type="text" class="txt2" name="name" value="{{ $user->name }}"></td>
                 </tr>
                 <tr>
                     <td>性別</td>
-                    <td><input type="text" class="txt2" name="gender" value="{{ $users->gender }}"></td>
+                    <td><input type="text" class="txt2" name="gender" value="{{ $user->gender }}"></td>
                 </tr>
                 <tr>
                     <td>誕生日</td>
-                    <td><input type="text" class="txt2" name="birthday" value="{{ $users->birthday }}">
+                    <td><input type="text" class="txt2" name="birthday" value="{{ $user->birthday }}">
                     </td>
                 </tr>
                 <tr>
                     <td>プロフィール画像</td>
-                    <td><input type="file" name="image"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        @if ($users->my_photo)
-                            <img src="{{ \Storage::url($users->my_photo) }}" width="25%">
-                        @else
-                            <img class="img" src="{{ asset('img/usericon.png') }}">
-                        @endif
-                    </td>
+                    <td><input type="file" name="my_photo"></td>
                 </tr>
         </table>
+        <p class="p1">現在のプロフィール画像</p>
+        @if (empty($user->my_photo))
+            <div class="profile">
+                <img class="img" src="{{ asset('img/usericon.png') }}">
+            </div>
+        @else
+            <div class="profile">
+                <img class="img" src="{{ Storage::url($user->my_photo) }}">
+            </div>
+        @endif
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-outline-dark" margin>更新</button>
             </form>
             <span class="margin"></span>
-            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('todo.index') }}"
-                    class="text-dark">タスク一覧に戻る</a></button>
+            <button type="button" class="btn btn-outline-dark" margin><a href="{{ route('user.index') }}"
+                    class="text-dark">マイページに戻る</a></button>
         </div>
 
         <!-- Optional JavaScript -->

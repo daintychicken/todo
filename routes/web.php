@@ -11,6 +11,12 @@ Route::group(['middleware' => 'auth'], function(){
     //トップページ
     Route::get('/', [TodoController::class, 'index'])->name('todo.index');
 
+    //ユーザープロフィール
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::patch('/user/update', [UserController::class, 'update'])->name('user.update');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
     //新規登録
     Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
     Route::post('/store', [TodoController::class, 'store'])->name('todo.store');
@@ -35,8 +41,4 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('/login', [LoginController::class, 'getLogin'])->name('todo.login');
 Route::post('/login', [LoginController::class, 'postLogin']);
 
-//iamge
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
-Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
