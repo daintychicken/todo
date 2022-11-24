@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('dept', 100)->nullable();
             $table->string('gender', 10)->nullable();
             $table->date('birthday')->nullable();
+            $table->string('my_photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

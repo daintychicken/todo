@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'login_id' => 'admin',
                 'password' => Hash::make('pass'),
                 'name' => '田中',
-                'dept' => 'ボス',
+                'dept' => '管理者',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],

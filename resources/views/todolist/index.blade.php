@@ -21,7 +21,16 @@
     </div>
     <div class="clear"></div>
     <section class="contents">
-        <button type="button" class="logout"><a href="{{ route('todo.logout') }}" class="text-dark">ログアウト</a></button>
+        <ul id="nav">
+            <li>
+                <button type="button" class="logout"><a href="{{ route('user.index') }}"
+                        class="text-dark">マイページ</a></button>
+            </li>
+            <li>
+                <button type="button" class="logout"><a href="{{ route('todo.logout') }}"
+                        class="text-dark">ログアウト</a></button>
+            </li>
+        </ul>
         <h2>Todoリスト</h2>
         <!-- 検索見出し -->
         <h3>検索 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24"
@@ -50,9 +59,9 @@
                         <td style="padding-right: 15px">
                             <select name="status">
                                 <option></option>
-                                <option value="work">進行中</option>
-                                <option value="done">完了</option>
-                                <option value="past">期限切れ</option>
+                                <option value="work" @if (request()->status == 'work') selected @endif>進行中</option>
+                                <option value="done" @if (request()->status == 'done') selected @endif>完了</option>
+                                <option value="past" @if (request()->status == 'past') selected @endif>期限切れ</option>
                             </select>
                         </td>
                         <td style="padding-right: 15px"><button type="submit"

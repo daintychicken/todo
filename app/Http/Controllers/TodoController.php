@@ -18,11 +18,12 @@ class TodoController extends Controller
         $status = $request->input('status');
         //期限切れ判定用
         $today = date('Y-m-d');
-
+        //データベース取得
         $query = Todolist::query();
         //ログインしているユーザーのタスクを表示する
         $query->where('user_id', '=', $user_id);
-        //もし検索キーワードが入力されていれば、検索結果を取得&ログインしているユーザーのタスクを変数に設定
+
+        //もし検索キーワードが入力されていれば、検索結果を取得
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%");
         }

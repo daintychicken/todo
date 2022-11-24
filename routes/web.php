@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,6 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //ログアウト
     Route::get('/logout', [LoginController::class, 'getLogout'])->name('todo.logout');
+
 });
 
 
@@ -33,4 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('/login', [LoginController::class, 'getLogin'])->name('todo.login');
 Route::post('/login', [LoginController::class, 'postLogin']);
 
-
+//iamge
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
