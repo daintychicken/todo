@@ -12,11 +12,10 @@
 ## Docker のセットアップ
 
 ### docker desktop のインストール
-Windows10 Pro, Enterprise, Education 
-https://docs.docker.jp/docker-for-windows/install.html
+  
+Docker Desktop for Windows  
+https://docs.docker.com/desktop/install/windows-install/  
 
-Windows10 Home 
-https://docs.docker.jp/docker-for-windows/install-windows-home.html
 
 ### wsl2 及び ubuntu のセットアップ
 
