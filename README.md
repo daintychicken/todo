@@ -6,12 +6,29 @@
 **MySQL**  
 **Visual Studio code**  
 **laravel**  
+**Windows10**
 
 
-## インストール
+## Docker のセットアップ
 
-- ああああ  
-ああああああああああ  
+#### docker desktop のインストール
+Windows10 Pro, Enterprise, Education 
+https://docs.docker.jp/docker-for-windows/install.html
 
-あ
+Windows10 Home 
+https://docs.docker.jp/docker-for-windows/install-windows-home.html
 
+#### wsl2 及び ubuntu のセットアップ
+
+今回は、WSL2 上に Linux 環境を構築するため Ubuntu を使用する
+
+DockerDesktop を起動
+
+Microsoft Store から Ubuntu をインストールする
+
+今回使用したバージョンは「Ubuntu 20.04 LTS」
+インストールが終了したらスタートメニューから Ubuntu を起動
+
+エクスプローラーで「\\wsl$」へアクセス
+
+docker-desktop, docker-desktop-data, Ubuntu-20.04 が見えているはず
