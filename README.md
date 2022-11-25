@@ -11,14 +11,14 @@
 
 ## Docker のセットアップ
 
-#### docker desktop のインストール
+### docker desktop のインストール
 Windows10 Pro, Enterprise, Education 
 https://docs.docker.jp/docker-for-windows/install.html
 
 Windows10 Home 
 https://docs.docker.jp/docker-for-windows/install-windows-home.html
 
-#### wsl2 及び ubuntu のセットアップ
+### wsl2 及び ubuntu のセットアップ
 
 今回は、WSL2 上に Linux 環境を構築するため Ubuntu を使用する
 
