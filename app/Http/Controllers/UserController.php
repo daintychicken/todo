@@ -60,9 +60,9 @@ class UserController extends Controller
                 $users->my_photo = basename($path);
             }
             $users->save();
-            return redirect()->route('user.index')->with('message', 'ユーザープロフィールを更新しました');
+            return redirect()->route('user.index')->with('message', 'プロフィールを更新しました');
         } catch (\Exception $e) {
-            return back()->with('message', 'ユーザープロフィールを更新できませんでした 内容をご確認ください');
+            return back()->with('message', 'プロフィールを更新できませんでした 内容をご確認ください');
         }
     }
 

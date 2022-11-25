@@ -16,7 +16,7 @@ class TodolistsSeeder extends Seeder
 
     public function run()
     {
-        foreach (range(1, 7) as $num) {
+        foreach (range(1, 5) as $num) {
             DB::table('todolists')->insert([
                 'user_id' => 1,
                 'name' => "管理者タスク {$num}",
@@ -25,7 +25,7 @@ class TodolistsSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
         }
-        foreach (range(1, 7) as $num) {
+        foreach (range(1, 5) as $num) {
             DB::table('todolists')->insert([
                 'user_id' => 2,
                 'name' => "開発部タスク {$num}",
@@ -34,7 +34,7 @@ class TodolistsSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
         }
-        foreach (range(1, 7) as $num) {
+        foreach (range(1, 5) as $num) {
             DB::table('todolists')->insert([
                 'user_id' => 4,
                 'name' => "購買部タスク {$num}",
