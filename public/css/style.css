@@ -7,6 +7,22 @@ body {
     color: rgb(68, 68, 68);
 }
 
+.contents {
+    background-color: rgb(253, 252, 249);
+    padding: 70px;
+    border: 2px solid rgb(109, 97, 80);
+    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+}
+
+h2 {
+    color: rgb(109, 97, 80);
+}
+
+.margin {
+    margin-right: 10px;
+}
+
+/* Todoリスト画面のCSS */
 .welcome {
     width: 50%;
     height: 100px;
@@ -35,22 +51,17 @@ body {
     clear: both
 }
 
-.contents {
-    background-color: rgb(253, 252, 249);
-    padding: 70px;
-    border: 2px solid rgb(109, 97, 80);
-    border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
+#nav {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    overflow: hidden;
 }
 
-h2 {
-    color: rgb(109, 97, 80);
+#nav li {
+    float: left;
 }
 
-.margin {
-    margin-right: 10px;
-}
-
-/* Todoリスト画面のCSS */
 h3 {
     font-size: 20px;
     color: rgb(68, 68, 68);
@@ -74,9 +85,8 @@ h3::after {
 }
 
 .logout {
-    width: 100%;
+    float: left;
     font-size: 14px;
-    text-align: right;
     border: none;
     outline: none;
     background-color: rgba(0, 0, 0, 0);
@@ -114,6 +124,8 @@ select {
     text-align: center;
     margin: 80px auto;
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
 }
 
 .txt2 {
@@ -138,4 +150,19 @@ select {
 .td {
     padding: 10px;
     margin: 5px;
+}
+
+/* ユーザープロフィールのCSS */
+.profile {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.img {
+    width: 150px;
+}
+
+.p1 {
+    text-align: center;
 }

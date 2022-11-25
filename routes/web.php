@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,6 +10,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     //トップページ
     Route::get('/', [TodoController::class, 'index'])->name('todo.index');
+
+    //ユーザープロフィール
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::patch('/user/update', [UserController::class, 'update'])->name('user.update');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 
     //新規登録
     Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
@@ -26,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //ログアウト
     Route::get('/logout', [LoginController::class, 'getLogout'])->name('todo.logout');
+
 });
 
 

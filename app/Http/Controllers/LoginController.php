@@ -24,9 +24,7 @@ class LoginController extends Controller
     if (Auth::attempt(['login_id' => $request->input('login_id'), 'password' => $request->input('password')])) {
         return redirect()->route('todo.index');
     }
-    return back()->withErrors([
-        'error',
-    ]);
+    return back()->with('message', 'ユーザー名かパスワードが間違っています');
     }
 
     //ログアウト
