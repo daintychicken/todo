@@ -2,14 +2,15 @@
 
 
 ## 開発環境
-** Docker Desktop
-** ubuntu
-** laravel
+** Docker Desktop　**
+** ubuntu **
+** laravel **
 
 
 ### インストール
 
 - ああああ
 ああああああああああ
+
 あ
 
