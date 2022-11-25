@@ -13,21 +13,22 @@
 
 ### docker desktop のインストール
   
-Docker Desktop for Windows  
-https://docs.docker.com/desktop/install/windows-install/  
+以下のページよりDocker Desktop for Windowsをダウンロードします  
+https://docs.docker.com/desktop/install/windows-install/
+
+画面に沿ってインストールを終わらせます  
+インストールが終わったら、Dockerを起動します  
 
 
 ### wsl2 及び ubuntu のセットアップ
 
-今回は、WSL2 上に Linux 環境を構築するため Ubuntu を使用する
-
-DockerDesktop を起動
-
 Microsoft Store から Ubuntu をインストールする
-
-今回使用したバージョンは「Ubuntu 20.04 LTS」
 インストールが終了したらスタートメニューから Ubuntu を起動
 
 エクスプローラーで「\\wsl$」へアクセス
+PowerShell にて以下コマンド実行
 
-docker-desktop, docker-desktop-data, Ubuntu-20.04 が見えているはず
+```
+wsl --set-version Ubuntu-20.04 2
+wsl -l -v 　# Ubuntu-20.04がVERSION2となっていることを確認
+```
