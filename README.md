@@ -3,8 +3,8 @@
 
 ## 開発環境
 **Docker Desktop**  
-**wsl2**  
-**ubuntu**  
+**MySQL**  
+**Visual Studio code**  
 **laravel**  
 
 
