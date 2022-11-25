@@ -1,12 +1,13 @@
 /* ログイン画面のCSS */
 body {
     background: linear-gradient(90deg, #f0bc68d3 0%, #f0bc68d3 50%, #c4d7d1 50%, #c4d7d1 100%);
-    width: 100%;
-    height: auto;
-    margin: 100px auto;
     color: rgb(68, 68, 68);
 }
 
+.contents {
+    width: 850px;
+    margin: 100px auto;
+}
 
 .image {
     width: 50%;

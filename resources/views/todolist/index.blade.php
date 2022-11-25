@@ -13,11 +13,25 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 </head>
 
+{{-- セッションが持つメッセージの表示 --}}
+@if (session('message'))
+    <div class="alert alert-light" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bell-ringing" width="24"
+            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
+            <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+            <path d="M21 6.727a11.05 11.05 0 0 0 -2.794 -3.727"></path>
+            <path d="M3 6.727a11.05 11.05 0 0 1 2.792 -3.727"></path>
+        </svg>&nbsp;{{ session('message') }}
+    </div>
+@endif
+
 <body>
     <div>
         <p class="welcome">おかえりなさい</p>
-        <p class="name"><?php $user = Auth::user(); ?>{{ $user->name }}<img src="{{ asset('img/boxnyan.png') }}"
-                width="100"></p>
+        <p class="name">{{ $user->name }}<img src="{{ asset('img/boxnyan.png') }}" width="100"></p>
     </div>
     <div class="clear"></div>
     <section class="contents">
@@ -45,8 +59,8 @@
         <table class="table1">
             <thead>
                 <tr>
-                    <th>タスク名(部分一致)</th>
-                    <th>ステータス</th>
+                    <th style="padding-right: 15px">タスク名(部分一致)</th>
+                    <th style="padding-right: 15px">ステータス</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -56,7 +70,7 @@
                     <form action="{{ route('todo.index') }}" method="GET">
                         <td style="padding-right: 15px"><input type="text" class="txt1" name="keyword"
                                 value="{{ $keyword }}"></td>
-                        <td style="padding-right: 15px">
+                        <td style="padding-right: 15px; padding-top: 5px;">
                             <select name="status">
                                 <option></option>
                                 <option value="work" @if (request()->status == 'work') selected @endif>進行中</option>
@@ -92,7 +106,7 @@
         <!-- 新規登録ボタン -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="button" class="btn btn-outline-dark"><a href="{{ route('todo.create') }}"
-                    class="text-dark">新規登録
+                    class="text-dark">新規登録&nbsp;
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-minus"
                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                         fill="none" stroke-linecap="round" stroke-linejoin="round">

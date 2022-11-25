@@ -124,6 +124,8 @@ select {
     text-align: center;
     margin: 80px auto;
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
 }
 
 .txt2 {
@@ -159,4 +161,8 @@ select {
 
 .img {
     width: 150px;
+}
+
+.p1 {
+    text-align: center;
 }

@@ -5,6 +5,7 @@ use App\Models\Todolist;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class TodoController extends Controller
 {
@@ -42,9 +43,9 @@ class TodoController extends Controller
                 });
             }
         }
-        //設定した変数の情報を期限が違い順に取得して、indexに返す
+        //設定した変数の情報を期限が早い順に取得して、indexに返す
         $todolists = $query->orderByRaw('limit_date')->get();
-        return view('todolist.index', compact('todolists', 'keyword', 'status'));
+        return view('todolist.index', ['user' => Auth::user()], compact('todolists', 'keyword', 'status'));
     }
 
     public function create()
@@ -65,13 +66,11 @@ class TodoController extends Controller
             $todolists->limit_date  =  $request->limit_date;
             $todolists->save();
             DB::commit();
-            return redirect()->route('todo.index');
+            return redirect()->route('todo.index')->with('message', 'タスクを登録しました');
         } catch (\Exception $e) {
             DB::rollBack();
+            return back()->with('message', '登録できませんでした 入力内容を確認してください');
         }
-        return back()->withErrors([
-            'error',
-        ]);
     }
 
     public function show($id)
@@ -114,14 +113,12 @@ class TodoController extends Controller
                 $todolists->completion_date  =  $request->completion_date;
                 $todolists->save();
                 DB::commit();
-                return redirect()->route('todo.index');
+                return redirect()->route('todo.index')->with('message', 'タスクを更新しました');
             }
         } catch (\Exception $e) {
             DB::rollBack();
+            return back()->with('message', '更新できませんでした 入力内容を確認してください');
         }
-        return back()->withErrors([
-            'error',
-        ]);
     }
 
     public function softDeletes($id)
@@ -131,7 +128,7 @@ class TodoController extends Controller
             return redirect()->route('todo.login');
         } else {
             Todolist::find($id)->delete();
-            return redirect()->route('todo.index');
+            return redirect()->route('todo.index')->with('message', 'タスクを削除しました');
         }
     }
 }

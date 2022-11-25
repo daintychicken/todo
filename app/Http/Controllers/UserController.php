@@ -60,37 +60,10 @@ class UserController extends Controller
                 $users->my_photo = basename($path);
             }
             $users->save();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with('message', 'ユーザープロフィールを更新しました');
         } catch (\Exception $e) {
-        DB::rollBack();
+            return back()->with('message', 'ユーザープロフィールを更新できませんでした 内容をご確認ください');
         }
-        return back()->withErrors([
-            'error',
-        ]);
-
-            //画像フォームでリクエストした画像を取得
-            // $img = $request->file('my_photo');
-
-            // //storage > public > img配下に画像が保存される
-            // $path = $img->store('img','public');
-            // if (isset($img)) {
-            //     // 選択された画像ファイルを保存してパスをセット
-            //     $path = $img->store('img','public');
-            // }
-            // try {
-            //     DB::beginTransaction();
-            //         $users->name  =  $request->name;
-            //         $users->gender  =  $request->gender;
-            //         $users->birthday  =  $request->birthday;
-            //         $users->save();
-            //         DB::commit();
-            //         return redirect()->route('user.index');
-            // } catch (\Exception $e) {
-            //     DB::rollBack();
-            // }
-            // return back()->withErrors([
-            //     'error',
-            // ]);
     }
 
 }
