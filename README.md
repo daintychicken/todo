@@ -1,34 +1,49 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+## Todoリストアプリ
+シンプルなTodoリストのアプリを制作しました
+<br>
+<br>
 
 ## 開発環境
-**Docker Desktop**  
-**MySQL**  
-**Visual Studio code**  
-**laravel**  
-**Windows10**
+PHP v8.0.2  
+MySQL
+<br>
+<br>
 
+## 環境構築
 
-## Docker のセットアップ
-
-### docker desktop のインストール
-  
-以下のページよりDocker Desktop for Windowsをダウンロードします  
-https://docs.docker.com/desktop/install/windows-install/
-
-画面に沿ってインストールを終わらせます  
-インストールが終わったら、Dockerを起動します  
-
-
-### wsl2 及び ubuntu のセットアップ
-
-Microsoft Store から Ubuntu をインストールする
-インストールが終了したらスタートメニューから Ubuntu を起動
-
-エクスプローラーで「\\wsl$」へアクセス
-PowerShell にて以下コマンド実行
-
+このリポジトリを任意の場所にクローンします
 ```
-wsl --set-version Ubuntu-20.04 2
-wsl -l -v 　# Ubuntu-20.04がVERSION2となっていることを確認
+git clone https://github.com/daintychicken/lateral_todo.git
+```
+
+クローンしたフォルダにcdします
+```
+cd [フォルダ名]
+```
+
+composerをインストールします
+```
+composer install
+```
+
+.env.exampleファイルを元に、.envファイルを作成します
+```
+cp .env.example .env
+```
+.envファイルを作成したら、環境に合わせて
+DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORDを修正します
+
+マイグレーションを実行します
+```
+php artisan migrate
+```
+
+シーダーを実行し、初期データを登録します
+```
+php artisan db:seed
+```
+
+ストレージのパーミッションを変更します
+```
+sudo chmod 777 -R storage
 ```
