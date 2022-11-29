@@ -40,7 +40,3 @@ Route::group(['middleware' => 'auth'], function(){
 //ログイン
 Route::get('/login', [LoginController::class, 'getLogin'])->name('todo.login');
 Route::post('/login', [LoginController::class, 'postLogin']);
-
-
-
-Route::get('/page', [TodoController::class, 'pagenate']);

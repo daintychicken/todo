@@ -131,10 +131,4 @@ class TodoController extends Controller
             return redirect()->route('todo.index')->with('message', 'タスクを削除しました');
         }
     }
-
-    public function pagenate()
-    {
-        $todolists = DB::table('todolists')->paginate(10);
-        return view('pagenate', compact('todolists'));
-    }
 }
