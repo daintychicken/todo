@@ -15,7 +15,7 @@ body {
 }
 
 h2 {
-    color: rgb(109, 97, 80);
+    color: rgb(68, 68, 68);
 }
 
 .margin {
@@ -80,17 +80,16 @@ h3::after {
     width: 100%;
     margin: auto;
     height: 100%;
-    border: 1.5px solid rgb(109, 97, 80);
+    border: 1.5px solid rgb(68, 68, 68);
     content: '';
 }
 
-.logout {
+.menu {
     float: left;
     font-size: 14px;
     border: none;
     outline: none;
     background-color: rgba(0, 0, 0, 0);
-    color: rgb(109, 97, 80);
 }
 
 .txt1 {
