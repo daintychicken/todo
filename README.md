@@ -35,10 +35,20 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+
+ブラウザに画像を表示させるため、下記コマンドでストレージのシンボリックリンクを作成します
+```
+php artisan storage:link
+```
   
 下記コマンドでストレージのパーミッションを変更します
 ```
 sudo chmod 777 -R storage
+```
+
+最後に、パスワードのハッシュ化、セッションおよび Cookie の暗号化などに使用されるアプリケーションキーを生成します
+```
+php artisan key:generate
 ```
 <br>
 
@@ -60,7 +70,7 @@ php artisan serve
 
 ### Todoリスト画面
 ログインするとユーザーのタスク一覧が表示される  
-<img src="https://user-images.githubusercontent.com/111351842/204201765-bd4754a4-56a3-45c3-a8df-7b57a20a5f47.png" width="400px">  
+<img src="https://user-images.githubusercontent.com/111351842/204448986-ebc25594-22ae-4c88-980e-4ccd01ad42eb.png" width="400px">  
 **①マイページ**  
 ログインしているユーザーのマイページに遷移する  
 **②ログアウト**  
@@ -69,7 +79,7 @@ php artisan serve
 タスク名やステータスでタスクを検索することができる  
 クリアボタンを押下すると、全件表示に戻す  
 **④タスク一覧**  
-登録されているタスクの一覧を表示する  
+登録されているタスクの一覧を表示する(5件ごとにページ付けされる)  
 ステータスは期限と完了日の日付を見て自動で出力される  
 **⑤新規登録**  
 タスクの新規登録画面に遷移する    
