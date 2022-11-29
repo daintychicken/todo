@@ -36,7 +36,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-画像を表示させるため、下記コマンドでシンボリックリンクを作成します
+ブラウザに画像を表示させるため、下記コマンドでストレージのシンボリックリンクを作成します
 ```
 php artisan storage:link
 ```
