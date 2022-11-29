@@ -44,7 +44,7 @@ class TodoController extends Controller
             }
         }
         //設定した変数の情報を期限が早い順に取得して、indexに返す
-        $todolists = $query->orderByRaw('limit_date')->get();
+        $todolists = $query->orderByRaw('limit_date')->paginate(5);
         return view('todolist.index', ['user' => Auth::user()], compact('todolists', 'keyword', 'status'));
     }
 
@@ -130,5 +130,11 @@ class TodoController extends Controller
             Todolist::find($id)->delete();
             return redirect()->route('todo.index')->with('message', 'タスクを削除しました');
         }
+    }
+
+    public function pagenate()
+    {
+        $todolists = DB::table('todolists')->paginate(10);
+        return view('pagenate', compact('todolists'));
     }
 }
