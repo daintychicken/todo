@@ -1,4 +1,4 @@
-## Todoリストアプリ
+## Todoアプリ
 シンプルなTodoリストのアプリを制作しました
 <br><br>
 
@@ -35,10 +35,20 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+
+画像を表示させるため、下記コマンドでシンボリックリンクを作成します
+```
+php artisan storage:link
+```
   
 下記コマンドでストレージのパーミッションを変更します
 ```
 sudo chmod 777 -R storage
+```
+
+最後に、パスワードのハッシュ化、セッションおよび Cookie の暗号化などに使用されるアプリケーションキーを生成します
+```
+php artisan key:generate
 ```
 <br>
 
