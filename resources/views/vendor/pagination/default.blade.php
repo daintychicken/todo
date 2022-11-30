@@ -69,6 +69,23 @@
                         </svg></span>
                 </li>
             @endif
+
+            {{-- 件数表示 --}}
+            {{-- <div>
+                <p>
+                    <span>{{ $paginator->total() }}</span>
+                    {!! __('件中') !!}
+                    @if ($paginator->firstItem())
+                        <span>{{ $paginator->firstItem() }}</span>
+                        {!! __('-') !!}
+                        <span>{{ $paginator->lastItem() }}</span>
+                    @else
+                        {{ $paginator->count() }}
+                    @endif
+                    {!! __('件') !!}
+                </p>
+            </div> --}}
+
         </ul>
     </nav>
 @endif
