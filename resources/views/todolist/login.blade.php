@@ -14,7 +14,7 @@
 <body>
     <section class="contents">
         {{-- エラーメッセージ --}}
-        @if ($errors->any())
+        @if (session('message'))
             <div>
                 <div class="alert alert-danger" role="alert">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-octagon"

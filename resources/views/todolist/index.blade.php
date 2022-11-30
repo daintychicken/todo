@@ -133,9 +133,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($todolists as $key => $todo)
+                    <?php $index = 1; ?>
+                    @foreach ($todolists as $todo)
                         <tr>
-                            <td class="text-dark">{{ $key + 1 }}</td>
+                            <td class="text-dark">{{ $todolists->firstItem() + $loop->index }}</td>
                             <td class="text-dark">{{ $todo->name }}</td>
                             <td class="text-dark">{{ $todo->limit_date }}</td>
                             <td>
@@ -150,7 +151,7 @@
                                     <p>進行中</p>
                                 @endif
                             </td>
-
+                            <?php $index++; ?>
                             <td><button type="button" class="btn btn-outline-dark rounded-circle p-0"
                                     style="width:2rem;height:2rem;"><a
                                         href="{{ route('todo.show', ['id' => $todo->id]) }}"
@@ -168,9 +169,10 @@
                             </td>
                         </tr>
                     @endforeach
+
                 </tbody>
         </div>
-        {{ $todolists->links('vendor.pagination.default') }}
+        {{ $todolists->appends(Request::only('keyword', 'status'))->links('vendor.pagination.default') }}
         </table>
     </section>
 
