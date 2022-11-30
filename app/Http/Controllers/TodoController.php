@@ -39,7 +39,8 @@ class TodoController extends Controller
                 $query->where(function ($query) use ($today){
                     $query->whereNull('completion_date')
                     ->where('limit_date', '>', "$today")
-                    ->orwhereNull('limit_date');
+                    ->orwhereNull('limit_date')
+                    ->whereNull('completion_date');
                 });
             }
         }
