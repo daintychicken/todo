@@ -21,11 +21,6 @@ class UserController extends Controller
         return view('user.index', compact('user', 'count'));
     }
 
-    public function create(Request $request)
-    {
-        return view('user.create');
-    }
-
     public function store(Request $request)
     {
         // アップロードされたファイルの取得
