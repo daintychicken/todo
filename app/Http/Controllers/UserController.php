@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -13,8 +13,12 @@ class UserController extends Controller
 {
     public function index()
     {
+        //ユーザー情報取得
         $user = Auth::user();
-        return view('user.index', compact('user'));
+        //ユーザーが取得したいいね！の数をカウント
+        $count = Like::where('like_to', $user->login_id)->count();
+
+        return view('user.index', compact('user', 'count'));
     }
 
     public function create(Request $request)
@@ -66,4 +70,34 @@ class UserController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        //受け取ったIDの情報をテーブルから取得
+        $users = User::find($id);
+        $like = Like::where('like_to', $users->login_id)->where('user_id', Auth::id())->first();
+
+        return view('user.show', [
+            "users" => $users,
+            "like" => $like
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        //ログインしているユーザーのIDを取得
+        $user_id = Auth::id();
+        //検索キーワードを取得
+        $keyword = $request->input('keyword');
+
+        //データベース取得
+        $query = User::query();
+
+        //もし検索キーワードが入力されていれば、検索結果を取得
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%");
+        }
+        //設定した変数の情報を期限が早い順に取得して、indexに返す
+        $users = $query->orderByRaw('id')->paginate(5);
+        return view('user.search', compact('users', 'keyword'));
+    }
 }

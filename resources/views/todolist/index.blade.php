@@ -41,6 +41,10 @@
                         class="text-dark">マイページ</a></button>
             </li>
             <li>
+                <button type="button" class="menu"><a href="{{ route('user.search') }}"
+                        class="text-dark">ユーザー検索</a></button>
+            </li>
+            <li>
                 <button type="button" class="menu"><a href="{{ route('todo.logout') }}"
                         class="text-dark">ログアウト</a></button>
             </li>
@@ -171,9 +175,10 @@
                     @endforeach
 
                 </tbody>
+
+                {{ $todolists->appends(Request::only('keyword', 'status'))->links('vendor.pagination.default') }}
+            </table>
         </div>
-        {{ $todolists->appends(Request::only('keyword', 'status'))->links('vendor.pagination.default') }}
-        </table>
     </section>
 
 
