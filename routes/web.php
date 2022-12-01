@@ -3,6 +3,7 @@
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +17,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::patch('/user/update', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
+    //ユーザー検索
+    Route::get('/user/search', [UserController::class, 'search'])->name('user.search');
+    Route::get('/user/show/{id}', [UserController::class, 'show'])->name('user.show');
 
     //新規登録
     Route::get('/create', [TodoController::class, 'create'])->name('todo.create');
@@ -33,6 +38,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     //ログアウト
     Route::get('/logout', [LoginController::class, 'getLogout'])->name('todo.logout');
+
+    //like
+    Route::get('/reply/like/{id}', [LikeController::class,'like'])->name('reply.like');
+    Route::get('/reply/unlike/{id}', [LikeController::class,'unlike'])->name('reply.unlike');
 
 });
 

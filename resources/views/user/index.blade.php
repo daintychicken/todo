@@ -82,6 +82,12 @@
                         </svg></p>
                 </td>
             </tr>
+            <tr>
+                <td class="td">いいね！された数</td>
+                <td>
+                    <p class="txt3">{{ $count }}</p>
+                </td>
+            </tr>
         </table>
 
         <!-- ボタン -->
