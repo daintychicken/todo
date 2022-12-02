@@ -44,7 +44,7 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        $users = User::find($request->id);
+        $users = User::find(Auth::id());
         $users->name  =  $request->name;
         $users->gender  =  $request->gender;
         $users->birthday  =  $request->birthday;
@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         //受け取ったIDの情報をテーブルから取得
         $users = User::find($id);
-        $like = Like::where('like_to', $users->login_id)->where('user_id', Auth::id())->first();
+        $like = Like::where('like_to', $users->login_id)->where('from_user_id', Auth::id())->first();
 
         return view('user.show', [
             "users" => $users,

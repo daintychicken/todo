@@ -37,7 +37,6 @@
             <form method="post" action="{{ route('user.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-                <input type="hidden" name="id" value="{{ $user->id }}">
                 <tr>
                     <td>名前</td>
                     <td><input type="text" class="txt2" name="name" value="{{ $user->name }}"

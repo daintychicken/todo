@@ -11,6 +11,6 @@ class Like extends Model
     use HasFactory;
 
     // 配列内の要素を書き込み可能にする
-    protected $fillable = ['user_id', 'like_to'];
+    protected $fillable = ['from_user_id', 'like_to'];
 
 }

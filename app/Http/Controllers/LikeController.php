@@ -15,7 +15,7 @@ class LikeController extends Controller
     $users = User::find($request->id);
 
       Like::create([
-        'user_id' => Auth::id(),
+        'from_user_id' => Auth::id(),
         'like_to' => $users->login_id,
       ]);
 
@@ -27,7 +27,7 @@ class LikeController extends Controller
 
     $users = User::find($id);
 
-      $like=Like::where('like_to', $users->login_id)->where('user_id', Auth::id())->first();
+      $like=Like::where('like_to', $users->login_id)->where('from_user_id', Auth::id())->first();
       $like->delete();
 
       return redirect()->back()->with('unlike', 'のいいねを取り消しました');
