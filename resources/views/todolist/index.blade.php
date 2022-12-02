@@ -37,12 +37,12 @@
     <section class="contents">
         <ul id="nav">
             <li>
-                <button type="button" class="menu"><a href="{{ route('user.index') }}"
-                        class="text-dark">マイページ</a></button>
-            </li>
-            <li>
                 <button type="button" class="menu"><a href="{{ route('user.search') }}"
                         class="text-dark">ユーザー検索</a></button>
+            </li>
+            <li>
+                <button type="button" class="menu"><a href="{{ route('user.index') }}"
+                        class="text-dark">マイページ</a></button>
             </li>
             <li>
                 <button type="button" class="menu"><a href="{{ route('todo.logout') }}"

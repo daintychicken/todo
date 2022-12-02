@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->foreignId('from_user_id')->constrained('users');
             $table->string('like_to', 10);
             $table->timestamps();
         });
