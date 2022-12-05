@@ -88,6 +88,7 @@ select {
 
 /* いいねボタン */
 .iine {
+    width: 55px;
     height: 100px;
     float: left;
     display: flex;
@@ -106,7 +107,7 @@ select {
 }
 
 .likebtn {
-    background: #ffffff;
+    background: rgb(253, 252, 249);
     border: none;
     position: relative;
     padding: 5px;
@@ -116,7 +117,7 @@ select {
 }
 
 .likebtn:hover {
-    background: #fff;
+    background: rgb(253, 252, 249);
 }
 
 .likebtn:before,
