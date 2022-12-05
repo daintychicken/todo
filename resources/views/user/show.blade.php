@@ -51,12 +51,14 @@
             </div>
         @endif
 
-        <span class="iine">いいね！</span>
         {{-- いいね！ --}}
-        <section class="like">
-            @if ($like)
-                <!-- 「いいね」取消用ボタンを表示 -->
+
+        @if ($like)
+            <!-- 「いいね」取消用ボタンを表示 -->
+            <span class="iine">Unlike</span>
+            <section class="like">
                 <button class="likebtn">
+
                     <a href="{{ route('reply.unlike', ['id' => $users->id]) }}" class="btn">
                         <div> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-down"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ec7492"
@@ -68,8 +70,11 @@
                             </svg></div>
                     </a>
                 </button>
-            @else
-                <!-- 「いいね」ボタンを表示 -->
+            </section>
+        @else
+            <!-- 「いいね」ボタンを表示 -->
+            <span class="iine">Like!</span>
+            <section class="like">
                 <button class="likebtn"><a href="{{ route('reply.like', ['id' => $users->id]) }}" class="btn">
                         <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ec7492"
@@ -81,9 +86,9 @@
                             </svg></div>
                     </a>
                 </button>
-            @endif
-            <div>
-        </section>
+            </section>
+        @endif
+
         <div class="clear"></div>
         <!-- 詳細画面 -->
         <table class="table2">

@@ -165,7 +165,8 @@
                                         href="{{ route('todo.edit', ['id' => $todo->id]) }}"
                                         class="text-dark">＋</a></button></td>
                             <td>
-                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="POST">
+                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="POST"
+                                    onSubmit="return submitCheck()">
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger rounded-circle p-0"
                                         style="width:2rem;height:2rem;">！</button>
@@ -173,13 +174,22 @@
                             </td>
                         </tr>
                     @endforeach
-
                 </tbody>
-
                 {{ $todolists->appends(Request::only('keyword', 'status'))->links('vendor.pagination.default') }}
             </table>
         </div>
     </section>
+
+    {{-- 削除確認のリダイレクト --}}
+    <script>
+        function submitCheck() {
+            if (window.confirm('削除しますか？')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 
 
     <!-- Optional JavaScript -->
