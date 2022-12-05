@@ -124,7 +124,8 @@
 
         <!-- Todoリスト表示 -->
         <div class="todolists">
-            <table class="table table-hover">
+            {{-- <table class="table table-hover"> --}}
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col" class="text-dark">No</th>

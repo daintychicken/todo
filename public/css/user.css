@@ -89,17 +89,17 @@ select {
 /* いいねボタン */
 .iine {
     width: 55px;
-    height: 100px;
+    height: 105px;
     float: left;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     font-weight: bold;
-    color: #ec7492;
+    color: #74c6ec;
 }
 
 .like {
-    height: 65px;
+    height: 60px;
     float: left;
     display: flex;
     justify-content: flex-end;
@@ -109,38 +109,9 @@ select {
 .likebtn {
     background: rgb(253, 252, 249);
     border: none;
-    position: relative;
-    padding: 5px;
-    cursor: pointer;
-    transition: 800ms ease all;
     outline: none;
 }
 
 .likebtn:hover {
-    background: rgb(253, 252, 249);
-}
-
-.likebtn:before,
-.likebtn:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 2px;
-    width: 0;
-    background: #ec7492;
-    transition: 400ms ease all;
-}
-
-.likebtn:after {
-    right: inherit;
-    top: inherit;
-    left: 0;
-    bottom: 0;
-}
-
-.likebtn:hover:before,
-.likebtn:hover:after {
-    width: 100%;
-    transition: 800ms ease all;
+    transform: translateY(-8px);
 }

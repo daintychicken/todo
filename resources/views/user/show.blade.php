@@ -61,7 +61,7 @@
 
                     <a href="{{ route('reply.unlike', ['id' => $users->id]) }}" class="btn">
                         <div> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-down"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ec7492"
+                                width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#74c6ec"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path
@@ -77,7 +77,7 @@
             <section class="like">
                 <button class="likebtn"><a href="{{ route('reply.like', ['id' => $users->id]) }}" class="btn">
                         <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ec7492"
+                                width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#74c6ec"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path
