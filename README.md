@@ -101,7 +101,7 @@ php artisan serve
 ### ②マイページ
 ログインしているユーザーの情報を表示する  
 編集ボタンから内容を更新することができる  
-<img src="https://user-images.githubusercontent.com/111351842/204199629-1d74ace3-133d-4ee5-a38c-90f45f214180.PNG" width="400px">
+<img src="https://user-images.githubusercontent.com/111351842/205535327-89d86f59-275b-4702-b2dc-2568b5133f12.PNG" width="400px">
 
 ### ⑥新規登録
 登録したい内容を入力し、登録ボタンを押下するとタスクを登録し、一覧画面に遷移する  
@@ -111,5 +111,4 @@ php artisan serve
 登録したタスクの内容を修正したり、完了日の入力をすることができる  
 更新ボタンを押下すると内容を更新し、一覧画面に遷移する  
 <img src="https://user-images.githubusercontent.com/111351842/204200923-5f995113-0ff5-4be8-ab20-621eb733c51a.PNG" width="400px">
-
 
