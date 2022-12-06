@@ -113,3 +113,8 @@ php artisan serve
 更新ボタンを押下すると内容を更新し、一覧画面に遷移する  
 <img src="https://user-images.githubusercontent.com/111351842/204200923-5f995113-0ff5-4be8-ab20-621eb733c51a.PNG" width="400px">
 
+
+## イラストのサイト
+loose drawing　https://loosedrawing.com/  
+shigureni　https://www.shigureni.com/
+
